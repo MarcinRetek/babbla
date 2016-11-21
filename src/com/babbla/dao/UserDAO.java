@@ -1,4 +1,4 @@
-package com.babbla.daobeans;
+package com.babbla.dao;
 
 import javax.ejb.Stateful;
 import javax.persistence.EntityManager;
@@ -8,7 +8,7 @@ import com.babbla.interfaces.LocalUser;
 import com.babbla.models.UserModel;
 
 @Stateful
-public class UserDAOBean{
+public class UserDAO{
 
 	@PersistenceContext
 	EntityManager entityManager;

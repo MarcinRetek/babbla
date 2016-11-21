@@ -3,7 +3,7 @@ package com.babbla.EJB;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
 
-import com.babbla.daobeans.UserDAOBean;
+import com.babbla.dao.UserDAO;
 import com.babbla.interfaces.LocalUser;
 import com.babbla.models.UserModel;
 
@@ -11,7 +11,7 @@ import com.babbla.models.UserModel;
 public class UserEJB implements LocalUser {
 	
 	@EJB
-	UserDAOBean userDao;
+	UserDAO userDao;
 
 	@Override
 	public UserModel saveUser(UserModel user) {
