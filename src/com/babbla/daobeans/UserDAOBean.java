@@ -1,18 +1,19 @@
-package DAO;
+package com.babbla.daobeans;
 
 import javax.ejb.Stateful;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
-import EJB.LocalUser;
+import com.babbla.interfaces.LocalUser;
+import com.babbla.models.UserModel;
 
 @Stateful
-public class UserDAO{
+public class UserDAOBean{
 
 	@PersistenceContext
 	EntityManager entityManager;
 	
-	public User saveUser(User user) {
+	public UserModel saveUser(UserModel user) {
 		entityManager.merge(user);
 		return user;
 	}
