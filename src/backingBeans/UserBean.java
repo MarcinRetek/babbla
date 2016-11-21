@@ -20,8 +20,8 @@ public class UserBean {
 	public String save() {
 		System.out.println("Inside USER SAVE");
 		User user = new User();
-		user.setName("kalle");
-		user.setEmail("kalle@kalle.se");
+		user.setName(name);
+		user.setEmail(email);
 		
 		userEJB.saveUser(user);
 		
