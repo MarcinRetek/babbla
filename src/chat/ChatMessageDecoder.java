@@ -11,7 +11,7 @@ import javax.websocket.DecodeException;
 import javax.websocket.Decoder;
 import javax.websocket.EndpointConfig;
 
-import EJB.LocalUser;
+import com.babbla.interfaces.LocalUser;
 
 public class ChatMessageDecoder implements Decoder.Text<ChatMessage> {
 

@@ -1,15 +1,15 @@
-package backingBeans;
+package com.babbla.backingbeans;
 
 import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
 
-import DAO.User;
-import EJB.LocalUser;
+import com.babbla.interfaces.LocalUser;
+import com.babbla.models.UserModel;
 
 @Named(value="userBean")
 @RequestScoped
-public class UserBean {
+public class UserControllerBean {
 	
 	@EJB
 	private LocalUser userEJB;	
@@ -19,7 +19,7 @@ public class UserBean {
 	
 	public String save() {
 		System.out.println("Inside USER SAVE");
-		User user = new User();
+		UserModel user = new UserModel();
 		user.setName(name);
 		user.setEmail(email);
 		
