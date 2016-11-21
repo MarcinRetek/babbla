@@ -19,12 +19,12 @@ public class UserBean {
 	
 	public String save() {
 		System.out.println("Inside USER SAVE");
-//		User user = new User();
-//		user.setName("kalle");
-//		user.setEmail("kalle@kalle.se");
-//		
-//		userEJB.saveUser(user);
-//		
+		User user = new User();
+		user.setName("kalle");
+		user.setEmail("kalle@kalle.se");
+		
+		userEJB.saveUser(user);
+		
 		return "";
 		
 	}
