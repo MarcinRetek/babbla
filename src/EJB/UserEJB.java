@@ -1,10 +1,10 @@
 package EJB;
 
-import javax.ejb.Stateful;
 import javax.ejb.Stateless;
 
 import DAO.User;
 
+@Stateless
 public class UserEJB {
 	
 }

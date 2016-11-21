@@ -1,5 +1,6 @@
 package backingBeans;
 
+import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
 
@@ -9,14 +10,15 @@ import EJB.LocalUser;
 @Named(value="userBean")
 @RequestScoped
 public class UserBean {
-	//@EJB
+	
+	@EJB
 	private LocalUser userEJB;	
 	
 	private String name;
 	private String email;
 	
 	public String save() {
-//		System.out.println("Inside USER SAVE");
+		System.out.println("Inside USER SAVE");
 //		User user = new User();
 //		user.setName("kalle");
 //		user.setEmail("kalle@kalle.se");
