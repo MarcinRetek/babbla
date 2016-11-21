@@ -20,13 +20,12 @@ public class UserControllerBean {
 	private String email;
 	
 	public void save(String username, String userEmail) {
-		System.out.println(userEmail + username);
+		System.out.println("String " + userEmail + "  " + username);
 		UserModel user = new UserModel();
 		user.setName(username);
 		user.setEmail(userEmail);
-		System.out.println("USER: " + user.getName());
+		System.out.println("USER: " + user.getName() + "  " + user.getEmail());
 		userEJB.saveUser(user);
-		
 		
 	}
 	

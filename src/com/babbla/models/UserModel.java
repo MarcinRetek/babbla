@@ -8,12 +8,17 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 @Entity
 @Table(name="users")
-@NamedQuery(name="UserModel.findAll", query="SELECT n FROM UserModel n")
+@NamedQueries({
+	@NamedQuery(name="UserModel.findAll", query="SELECT n FROM UserModel n"),
+	@NamedQuery(name="UserModel.findByEmail", query="SELECT u FROM UserModel u WHERE u.email = :email")
+})
+
 public class UserModel implements Serializable{
 	
 	@Id
