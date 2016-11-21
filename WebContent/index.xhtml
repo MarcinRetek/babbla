@@ -10,26 +10,19 @@
 <h:head>
 	<title>Babbla</title>
 	<meta name="google-signin-scope" content="profile email"></meta>
-	<meta name="google-signin-client_id"
-		content="660649166502-qljiqonknrnituk0pm2o33ajl4ne6qif.apps.googleusercontent.com"></meta>
-	<link rel="stylesheet"
-		href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"></link>
+	<meta name="google-signin-client_id" content="660649166502-qljiqonknrnituk0pm2o33ajl4ne6qif.apps.googleusercontent.com"></meta>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"></link>
 	<script src="https://apis.google.com/js/platform.js"></script>
-	<script
-		src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 	<script src="resources/JS/login-script.js"></script>
-
 	<link rel="stylesheet" href="resources/CSS/stylesheet.css"></link>
 </h:head>
 <h:body>
 	<ui:include src="/WEB-INF/components/nav-bar.xhtml" />
 
-	<h:form>
-		<h:inputText value="#{ userBean.name }"></h:inputText>
-		<h:inputText value="#{ userBean.email }"></h:inputText>
-		<h:commandButton action="#{ userBean.save() }" value="OK"></h:commandButton>
-	</h:form>
-
+	<div>
+		
+	</div>
 </h:body>
 
 </html>

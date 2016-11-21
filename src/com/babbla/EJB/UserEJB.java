@@ -1,5 +1,7 @@
 package com.babbla.EJB;
 
+import java.util.List;
+
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
 
@@ -16,6 +18,11 @@ public class UserEJB implements LocalUser {
 	@Override
 	public UserModel saveUser(UserModel user) {
 		return userDao.saveUser(user);
+	}
+
+	@Override
+	public List<UserModel> getAll() {
+		return userDao.getAll();
 	}
 	
 }

@@ -1,16 +1,19 @@
 package com.babbla.models;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 @Entity
 @Table(name="users")
+@NamedQuery(name="UserModel.findAll", query="SELECT n FROM UserModel n")
 public class UserModel implements Serializable{
 	
 	@Id
@@ -43,7 +46,5 @@ public class UserModel implements Serializable{
 	public Integer getId() {
 		return id;
 	}
-	
-	
 	
 }

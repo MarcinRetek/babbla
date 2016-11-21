@@ -23,13 +23,11 @@
 	
 	<ui:include src="/WEB-INF/components/nav-bar.xhtml" />
 
-
-	 <h:form>
-		<h:inputText value="#{ userBean.name }"></h:inputText>
-		<h:inputText value="#{ userBean.email }"></h:inputText>
-		<h:commandButton action="#{ userBean.save() }" value="OK"></h:commandButton>
-	</h:form> 
-
+	<ul>
+		<ui:repeat value="#{ userBean.getAll() }" var="users">
+			<li>#{users.name}</li>
+		</ui:repeat>
+	</ul>
 </h:body>
 	
 </html>

@@ -1,5 +1,7 @@
 package com.babbla.backingbeans;
 
+import java.util.List;
+
 import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
@@ -17,16 +19,19 @@ public class UserControllerBean {
 	private String name;
 	private String email;
 	
-	public String save() {
-		System.out.println("Inside USER SAVE");
+	public void save(String username, String userEmail) {
+		System.out.println(userEmail + username);
 		UserModel user = new UserModel();
-		user.setName(name);
-		user.setEmail(email);
-		
+		user.setName(username);
+		user.setEmail(userEmail);
+		System.out.println("USER: " + user.getName());
 		userEJB.saveUser(user);
 		
-		return "";
 		
+	}
+	
+	public List<UserModel> getAll() {
+		return userEJB.getAll();
 	}
 	
 	public String getName() {
@@ -41,7 +46,5 @@ public class UserControllerBean {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	
-	
 	
 }
