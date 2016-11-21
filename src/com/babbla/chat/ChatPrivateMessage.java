@@ -1,4 +1,4 @@
-package chat;
+package com.babbla.chat;
 
 public class ChatPrivateMessage extends ChatMessage {
 

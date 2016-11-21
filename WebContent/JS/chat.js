@@ -1,7 +1,6 @@
 /* <![CDATA[ */
 	var wsocket;
-	//var serviceLocation = "ws://" + document.location.host + "/Babbla-project/chat/";
-	var serviceLocation = "ws://localhost:8888/Babbla-project/faces/chat";
+	var serviceLocation = "ws://" + document.location.host + "/Babbla-project/chat/";
 	var $nickName;
 	var $message;
 	var $chatWindow;
