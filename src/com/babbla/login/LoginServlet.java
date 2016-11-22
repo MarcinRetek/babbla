@@ -2,8 +2,11 @@ package com.babbla.login;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.net.URLEncoder;
 
 import javax.ejb.EJB;
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -47,21 +50,20 @@ public class LoginServlet extends HttpServlet {
 		String url = request.getRequestURL().toString();
 		String baseURL = url.substring(0, url.length() - request.getRequestURI().length()) + request.getContextPath();
 		
-		try {			
-			userEJB.validateUser(user);
-			
-			if (userEJB.saveUser(user) != null) {
-				response.sendRedirect(baseURL + "/faces/chat.xhtml");
-				//TODO: check session here.
 				
+			if(userEJB.validateUser(user)){
+				System.out.println("user saved from POST");
+				response.sendRedirect(baseURL + "/faces/index.jsp");
 			}else{
-				System.out.println("inen i elsen");
-				
+				System.out.println("user not saved from POST");
+				//response.sendRedirect(baseURL + "/faces/error.xhtml");
+				String message = "User already exists in database";
+				response.sendRedirect("index.jsp?message=" + URLEncoder.encode(message, "UTF-8"));
 			}
 			
-		} catch (ValidateException e) {
-			e.getMessage();
-		}		
+			
+			
+			
 		
 		
 	}

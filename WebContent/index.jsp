@@ -33,6 +33,8 @@
 	
 	<div id="container">
 	
+	<p>${param.message}</p>
+	
 	<h3>The Babbla Community</h3>
 	
 	<form id="user-form" action="loginServlet" method="post">
