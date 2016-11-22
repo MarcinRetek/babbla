@@ -5,15 +5,15 @@ import java.util.List;
 import javax.ejb.Local;
 
 import com.babbla.exceptions.ValidateException;
-import com.babbla.models.UserModel;
+import com.babbla.models.User;
 
 @Local
 public interface LocalUser {
 	
-	UserModel saveUser(UserModel user);
+	User saveUser(User user);
 
-	List<UserModel> getAll();
+	List<User> getAll();
 	
-	void validateUser(UserModel user) throws ValidateException;
+	void validateUser(User user) throws ValidateException;
 		
 }

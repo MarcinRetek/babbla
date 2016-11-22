@@ -7,8 +7,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
-import com.babbla.models.UserModel;
-import com.sun.tools.xjc.reader.xmlschema.bindinfo.BIConversion.User;
+import com.babbla.models.User;
 
 @Stateful
 public class UserDAO{
@@ -16,21 +15,21 @@ public class UserDAO{
 	@PersistenceContext
 	EntityManager entityManager;
 	
-	public UserModel saveUser(UserModel user) {
+	public User saveUser(User user) {
 		return entityManager.merge(user);
 	}
 
 	@SuppressWarnings("unchecked")
-	public List<UserModel> getAll() {
+	public List<User> getAll() {
 		return entityManager.createNamedQuery("UserModel.findAll").getResultList();
 	}
 
 	@SuppressWarnings("unchecked")
-	public List<UserModel> getUserByEmail(String email) {
+	public List<User> getUserByEmail(String email) {
 		System.err.println("getUserByEmail " + email);
-		Query findByEmail = entityManager.createNamedQuery("UserModel.findByEmail");
+		Query findByEmail = entityManager.createNamedQuery("User.findByEmail");
 		findByEmail.setParameter("email", email);
-		return (List<UserModel>)findByEmail.getResultList();
+		return (List<User>)findByEmail.getResultList();
 	}
 
 }

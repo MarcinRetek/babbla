@@ -8,7 +8,7 @@ import javax.ejb.Stateless;
 import com.babbla.dao.UserDAO;
 import com.babbla.exceptions.ValidateException;
 import com.babbla.interfaces.LocalUser;
-import com.babbla.models.UserModel;
+import com.babbla.models.User;
 
 @Stateless
 public class UserEJB implements LocalUser {
@@ -17,7 +17,7 @@ public class UserEJB implements LocalUser {
 	UserDAO userDao;
 
 	@Override
-	public UserModel saveUser(UserModel user) {
+	public User saveUser(User user) {
 		if (hasUniqueEmail(user)) {
 			return userDao.saveUser(user);			
 		}else{
@@ -26,23 +26,23 @@ public class UserEJB implements LocalUser {
 			
 	}
 	
-	public void validateUser(UserModel user) throws ValidateException{
+	public void validateUser(User user) throws ValidateException{
 		if (!hasUniqueEmail(user)) {
 			throw new ValidateException("A user with that email (" +user.getEmail() + ") already exists.");
 		}
 	}
 	
-	public boolean hasUniqueEmail(UserModel user){
+	public boolean hasUniqueEmail(User user){
 		String compareEmail = user.getEmail();
 
-		for(UserModel compareUser : userDao.getUserByEmail(compareEmail)) {
+		for(User compareUser : userDao.getUserByEmail(compareEmail)) {
 			if(compareUser!=user) return false;
 		}
 		return true;
 	}
 
 	@Override
-	public List<UserModel> getAll() {
+	public List<User> getAll() {
 		return userDao.getAll();
 	}
 	
