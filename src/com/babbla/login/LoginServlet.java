@@ -36,7 +36,7 @@ public class LoginServlet extends HttpServlet {
 
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+		
 		String username = request.getParameter("username");
 		String email = request.getParameter("email");
 				
@@ -47,8 +47,9 @@ public class LoginServlet extends HttpServlet {
 		String url = request.getRequestURL().toString();
 		String baseURL = url.substring(0, url.length() - request.getRequestURI().length()) + request.getContextPath();
 		
-		try {
+		try {			
 			userEJB.validateUser(user);
+			
 			if (userEJB.saveUser(user) != null) {
 				response.sendRedirect(baseURL + "/faces/chat.xhtml");
 				//TODO: check session here.
