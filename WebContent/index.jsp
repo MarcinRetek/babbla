@@ -30,14 +30,26 @@
 		</ul>
 		<div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>
 	</nav>
+<<<<<<< HEAD
 
+=======
+	
+	<div id="container">
+	
+	<p>${param.message}</p>
+	
+	<h3>The Babbla Community</h3>
+	
+>>>>>>> a291bab651645297041fcda7de4c93c86d05954f
 	<form id="user-form" action="loginServlet" method="post">
 
-		<input type="hidden" name="username" id="username" /> <input
-			type="hidden" name="email" id="email" /> <input type="submit"
-			value="Register" id="registerBtn" />
+		<input type="hidden" name="username" id="username" />
+		<input type="hidden" name="email" id="email" /> 
+		<input type="submit" value="Register" id="registerBtn" />
 
 	</form>
-
+	
+	</div>
+	
 </body>
 </html>

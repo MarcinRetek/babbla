@@ -17,15 +17,17 @@ public class UserEJB implements LocalUser {
 	UserDAO userDao;
 
 	@Override
-	public User saveUser(User user) {
-		return userDao.saveUser(user);
+	public void saveUser(User user) {
+		userDao.saveUser(user);
 	}
 	
-	@Override
-	public void validateUser(User user) throws ValidateException{
-		if (!hasUniqueEmail(user)) {
-			throw new ValidateException("A user with that email (" +user.getEmail() + ") already exists.");
+	public boolean validateUser(User user){
+		if(hasUniqueEmail(user)){
+			saveUser(user);
+			return true;
 		}
+		return false;
+		
 	}
 	
 	@Override
@@ -33,7 +35,7 @@ public class UserEJB implements LocalUser {
 		String compareEmail = user.getEmail();
 
 		for(User compareUser : userDao.getUserByEmail(compareEmail)) {
-			if(compareUser!=user) return false;
+			if(compareUser!= user) return false;
 		}
 		return true;
 	}
