@@ -20,13 +20,13 @@
 	<nav class="navbar navbar-default">
 
 	<div class="title">
-		<a class="navbar-brand" href="index.html">Babbla</a>
+		<a class="navbar-brand" href="index.jsp">Babbla</a>
 	</div>
 	<div class="navbar-header">
-		<a class="navbar-brand" href="index.html">Hem</a>
+		<a class="navbar-brand" href="index.jsp">Hem</a>
 	</div>
 	<ul class="nav navbar-nav">
-		<li><a href="chat.html">Chat</a></li>
+		<li><a href="chat.xhtml">Chat</a></li>
 		<li><a href="#" onclick="signOut();">Sign out</a></li>
 	</ul>
 	<div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>

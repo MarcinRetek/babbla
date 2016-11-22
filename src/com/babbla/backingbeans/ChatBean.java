@@ -9,7 +9,7 @@ import javax.faces.context.FacesContext;
 import com.babbla.interfaces.LocalUser;
 import com.babbla.models.User;
 
-public class ChatControllerBean {
+public class ChatBean {
 	
 	private String chatId;
 	

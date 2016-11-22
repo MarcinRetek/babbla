@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.ejb.Local;
 
+import com.babbla.backingbeans.LoginUserBean;
 import com.babbla.models.User;
 
 @Local
@@ -18,5 +19,11 @@ public interface LocalUser {
 	User getUserById(int id);
 
 	boolean validateUser(User user);
+
+	void loginUser(String name, String email, LoginUserBean loginUserBean);
+	
+	User getUserByEmail(String email);
+	
+	List<User> getListedUsersByEmail(String email);
 		
 }

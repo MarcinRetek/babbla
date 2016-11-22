@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.babbla.backingbeans.LoginUserBean;
 import com.babbla.interfaces.LocalUser;
 import com.babbla.models.User;
 
@@ -31,12 +32,14 @@ public class LoginServlet extends HttpServlet {
 	}
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-				String username = request.getParameter("username");
+		String username = request.getParameter("username");
 		String email = request.getParameter("email");
 
 		User user = new User();
 		user.setName(username);
 		user.setEmail(email);
+		
+		setUserSession(username, email);
 
 		String url = request.getRequestURL().toString();
 		String baseURL = url.substring(0, url.length() - request.getRequestURI().length()) + request.getContextPath();
@@ -45,12 +48,18 @@ public class LoginServlet extends HttpServlet {
 		if(userEJB.validateUser(user)){
 			response.sendRedirect(baseURL + "/faces/index.jsp");
 		}else{
-			System.out.println("user not saved from POST");
-			//response.sendRedirect(baseURL + "/faces/error.xhtml");
+			setUserSession(username, email);
 			String message = "User already exists in database";
 			response.sendRedirect("index.jsp?message=" + URLEncoder.encode(message, "UTF-8"));
 		}
 			
+	}
+	
+	public void setUserSession(String username, String email) {
+		LoginUserBean user = new LoginUserBean();
+		System.out.println("USER SESSION");
+		user.setName(username);
+		user.setEmail(email);
 	}
  
 

@@ -5,6 +5,7 @@ import java.util.List;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
 
+import com.babbla.backingbeans.LoginUserBean;
 import com.babbla.dao.UserDAO;
 import com.babbla.exceptions.ValidateException;
 import com.babbla.interfaces.LocalUser;
@@ -34,7 +35,7 @@ public class UserEJB implements LocalUser {
 	public boolean hasUniqueEmail(User user){
 		String compareEmail = user.getEmail();
 
-		for(User compareUser : userDao.getUserByEmail(compareEmail)) {
+		for(User compareUser : userDao.getListedUserByEmail(compareEmail)){
 			if(compareUser!= user) return false;
 		}
 		return true;
@@ -48,6 +49,21 @@ public class UserEJB implements LocalUser {
 	@Override
 	public User getUserById(int id) {
 		return userDao.getUserById(id);
+	}
+
+	@Override
+	public void loginUser(String name, String email, LoginUserBean loginUserBean) {
+		userDao.getUserByEmail(email);
+	}
+
+	@Override
+	public User getUserByEmail(String email) {
+		return userDao.getUserByEmail(email);
+	}
+
+	@Override
+	public List<User> getListedUsersByEmail(String email) {
+		return null;
 	}
 	
 }
