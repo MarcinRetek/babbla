@@ -15,5 +15,8 @@ public interface LocalUser {
 	List<User> getAll();
 	
 	void validateUser(User user) throws ValidateException;
+	
+	boolean hasUniqueEmail(User user);
+
 		
 }

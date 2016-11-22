@@ -18,24 +18,19 @@
 <body onload="startUp()">
 
 	<nav class="navbar navbar-default">
-	<div class="title">
-		<a class="navbar-brand" href="index.html">Babbla</a>
-	</div>
-	<div class="navbar-header">
-		<a class="navbar-brand" href="index.html">Hem</a>
-	</div>
-	<ul class="nav navbar-nav">
-		<li><a href="chat.html">Chat</a></li>
-		<li><a href="#" onclick="signOut();">Sign out</a></li>
-	</ul>
-	<div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>
+		<div class="title">
+			<a class="navbar-brand" href="index.html">Babbla</a>
+		</div>
+		<div class="navbar-header">
+			<a class="navbar-brand" href="index.html">Hem</a>
+		</div>
+		<ul class="nav navbar-nav">
+			<li><a href="chat.html">Chat</a></li>
+			<li><a href="#" onclick="signOut();">Sign out</a></li>
+		</ul>
+		<div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>
 	</nav>
 
-
-
-
-	<div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>
-	<button onclick="signOut();">Log out</button>
 	<form id="user-form" action="loginServlet" method="post">
 
 		<input type="hidden" name="username" id="username" /> <input

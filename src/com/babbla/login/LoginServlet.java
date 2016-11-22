@@ -52,10 +52,12 @@ public class LoginServlet extends HttpServlet {
 			if (userEJB.saveUser(user) != null) {
 				response.sendRedirect(baseURL + "/faces/chat.xhtml");
 				//TODO: check session here.
-				
-			}else{
-				System.out.println("inen i elsen");
-				
+			}
+			else{
+				System.out.println("ELSE");
+				response.sendRedirect(baseURL + "/faces/error.xhtml");
+				//TODO: check why else is now working
+
 			}
 			
 		} catch (ValidateException e) {

@@ -18,20 +18,17 @@ public class UserEJB implements LocalUser {
 
 	@Override
 	public User saveUser(User user) {
-		if (hasUniqueEmail(user)) {
-			return userDao.saveUser(user);			
-		}else{
-			return null;
-		}
-			
+		return userDao.saveUser(user);
 	}
 	
+	@Override
 	public void validateUser(User user) throws ValidateException{
 		if (!hasUniqueEmail(user)) {
 			throw new ValidateException("A user with that email (" +user.getEmail() + ") already exists.");
 		}
 	}
 	
+	@Override
 	public boolean hasUniqueEmail(User user){
 		String compareEmail = user.getEmail();
 
