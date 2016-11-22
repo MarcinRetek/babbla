@@ -18,6 +18,7 @@
 <body onload="startUp()">
 
 	<nav class="navbar navbar-default">
+<<<<<<< HEAD
 		<div class="title">
 			<a class="navbar-brand" href="index.html">Babbla</a>
 		</div>
@@ -29,6 +30,28 @@
 			<li><a href="#" onclick="signOut();">Sign out</a></li>
 		</ul>
 		<div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>
+=======
+	<div class="title">
+		<a class="navbar-brand" href="index.html">Babbla</a>
+	</div>
+	<div class="navbar-header">
+		<a class="navbar-brand" href="index.html">Hem</a>
+	</div>
+	<ul class="nav navbar-nav">
+		<li><a href="chat.html">Chat</a></li>
+		<li><a href="#" onclick="signOut();">Sign out</a></li>
+	</ul>
+	<div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>
+	<div id="reg-div">
+	<form id="user-form" action="loginServlet" method="post">
+
+		<input type="hidden" name="username" id="username" />
+		<input type="hidden" name="email" id="email" /> 
+		<input type="submit" value="Register" id="registerBtn" />
+
+	</form>
+	</div>
+>>>>>>> a8ab3aec412eaaf835cecc841a1e4f9a6c3edc03
 	</nav>
 <<<<<<< HEAD
 
@@ -40,6 +63,7 @@
 	
 	<h3>The Babbla Community</h3>
 	
+<<<<<<< HEAD
 >>>>>>> a291bab651645297041fcda7de4c93c86d05954f
 	<form id="user-form" action="loginServlet" method="post">
 
@@ -48,6 +72,9 @@
 		<input type="submit" value="Register" id="registerBtn" />
 
 	</form>
+=======
+	
+>>>>>>> a8ab3aec412eaaf835cecc841a1e4f9a6c3edc03
 	
 	</div>
 	

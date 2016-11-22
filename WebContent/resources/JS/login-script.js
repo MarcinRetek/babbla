@@ -2,7 +2,7 @@ var isUserLoggedIn = false
 
 
 function startUp() {
-	var hideContent = document.getElementById('container');
+	var hideContent = document.getElementById('reg-div');
 	hideContent.style.display = 'none';	
     
 //	if(isUserLoggedIn = true ){
@@ -15,7 +15,7 @@ function startUp() {
 
 function onSignIn(googleUser) {
 	isUserLoggedIn = true;  
-	var showContent = document.getElementById('container');
+	var showContent = document.getElementById('reg-div');
 	showContent.style.display = 'block';	
 
     var profile = googleUser.getBasicProfile();
@@ -42,7 +42,7 @@ function onSignIn(googleUser) {
 
 
 function signOut() {	
-	var hideContent = document.getElementById('container');
+	var hideContent = document.getElementById('reg-div');
 	hideContent.style.display = 'none';	
     var auth2 = gapi.auth2.getAuthInstance();
     auth2.signOut().then(function () {

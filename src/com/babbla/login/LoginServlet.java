@@ -1,19 +1,15 @@
 package com.babbla.login;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.net.URLEncoder;
 
 import javax.ejb.EJB;
-import javax.servlet.RequestDispatcher;
-import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.babbla.exceptions.ValidateException;
 import com.babbla.interfaces.LocalUser;
 import com.babbla.models.User;
 
@@ -55,11 +51,7 @@ public class LoginServlet extends HttpServlet {
 			response.sendRedirect("index.jsp?message=" + URLEncoder.encode(message, "UTF-8"));
 		}
 			
-			
-			
-			
-		
-		
 	}
+ 
 
 }
