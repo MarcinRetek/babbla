@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.babbla.exceptions.ValidateException;
 import com.babbla.interfaces.LocalUser;
-import com.babbla.models.UserModel;
+import com.babbla.models.User;
 
 /**
  * Servlet implementation class loginServlet
@@ -40,7 +40,7 @@ public class LoginServlet extends HttpServlet {
 		String username = request.getParameter("username");
 		String email = request.getParameter("email");
 				
-		UserModel user = new UserModel();
+		User user = new User();
 		user.setName(username);
 		user.setEmail(email);
 		
@@ -51,6 +51,8 @@ public class LoginServlet extends HttpServlet {
 			userEJB.validateUser(user);
 			if (userEJB.saveUser(user) != null) {
 				response.sendRedirect(baseURL + "/faces/chat.xhtml");
+				//TODO: check session here.
+				
 			}else{
 				
 				//TODO: HANDLE THIS - NOT WORKING!

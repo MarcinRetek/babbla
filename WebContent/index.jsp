@@ -15,7 +15,7 @@
 <body onload="startUp()">
 
 	<div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>
-	<button onclick="signOut();"></button>
+	<button onclick="signOut();">Log out</button>
 	<form id="user-form" action="loginServlet" method="post">
 		<input type="text" name="username" id="username"/>
 		<input type="text" name="email" id="email"/>

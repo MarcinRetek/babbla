@@ -7,7 +7,7 @@ import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
 
 import com.babbla.interfaces.LocalUser;
-import com.babbla.models.UserModel;
+import com.babbla.models.User;
 
 @Named(value="userBean")
 @RequestScoped
@@ -21,7 +21,7 @@ public class UserControllerBean {
 	
 	public void save(String username, String userEmail) {
 		System.out.println("String " + userEmail + "  " + username);
-		UserModel user = new UserModel();
+		User user = new User();
 		user.setName(username);
 		user.setEmail(userEmail);
 		System.out.println("USER: " + user.getName() + "  " + user.getEmail());
@@ -29,7 +29,7 @@ public class UserControllerBean {
 		
 	}
 	
-	public List<UserModel> getAll() {
+	public List<User> getAll() {
 		return userEJB.getAll();
 	}
 	
