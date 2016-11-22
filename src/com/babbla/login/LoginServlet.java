@@ -42,7 +42,7 @@ public class LoginServlet extends HttpServlet {
 		
 		String username = request.getParameter("username");
 		String email = request.getParameter("email");
-				
+						
 		User user = new User();
 		user.setName(username);
 		user.setEmail(email);
