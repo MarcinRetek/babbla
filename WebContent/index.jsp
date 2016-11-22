@@ -12,15 +12,14 @@
 	<script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script src="resources/JS/login-script.js"></script>
 </head>
-<body>
+<body onload="startUp()">
 
-			<div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>
-
-
+	<div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>
+	<button onclick="signOut();"></button>
 	<form id="user-form" action="loginServlet" method="post">
 		<input type="text" name="username" id="username"/>
 		<input type="text" name="email" id="email"/>
-		<input type="submit" value="Register"/>
+		<input type="submit" value="Register" id="registerBtn"/>
 	</form>
 
 </body>
