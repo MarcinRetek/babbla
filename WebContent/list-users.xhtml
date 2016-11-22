@@ -16,7 +16,6 @@
     <script src="https://apis.google.com/js/platform.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="resources/JS/login-script.js"></script>
-    
     <link rel="stylesheet" href="resources/CSS/stylesheet.css"></link>
     </h:head>
 <h:body>
@@ -25,9 +24,14 @@
 
 	<ul>
 		<ui:repeat value="#{ userBean.getAll() }" var="users">
-			<li>#{users.name}</li>
+			<li>
+				<h:link value="#{ users.name }" outcome="chat">	
+					<f:param name="username" value="#{ users.name }" />
+				</h:link>
+			</li>		
 		</ui:repeat>
 	</ul>
+	
 </h:body>
 	
 </html>

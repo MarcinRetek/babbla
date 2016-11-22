@@ -18,6 +18,7 @@ public class UserControllerBean {
 	
 	private String name;
 	private String email;
+	private String id;
 	
 	public void save(String username, String userEmail) {
 		System.out.println("String " + userEmail + "  " + username);
@@ -44,6 +45,10 @@ public class UserControllerBean {
 	}
 	public void setEmail(String email) {
 		this.email = email;
+	}
+
+	public String getId() {
+		return id;
 	}
 	
 }

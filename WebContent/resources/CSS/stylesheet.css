@@ -50,6 +50,12 @@
     font-family: cursive;
 }
 
-
+#response{
+	height: 300px;
+    overflow-y: scroll;
+    table-layout: fixed;
+    display: block;
+	
+}
 
 

@@ -21,7 +21,7 @@ public class UserDAO{
 
 	@SuppressWarnings("unchecked")
 	public List<User> getAll() {
-		return entityManager.createNamedQuery("UserModel.findAll").getResultList();
+		return entityManager.createNamedQuery("User.findAll").getResultList();
 	}
 
 	@SuppressWarnings("unchecked")
@@ -30,6 +30,10 @@ public class UserDAO{
 		Query findByEmail = entityManager.createNamedQuery("User.findByEmail");
 		findByEmail.setParameter("email", email);
 		return (List<User>)findByEmail.getResultList();
+	}
+
+	public User getUserById(int id) {
+		return entityManager.find(User.class, id);
 	}
 
 }

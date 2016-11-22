@@ -11,13 +11,15 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"></link>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-	<script src="JS/chat.js"></script>
+	<script src="resources/JS/chat.js"></script>
+	<link rel="resources/CSS/stylesheet.css"></link>
+	
 </h:head>
 <h:body>
 
 	<ui:include src="/WEB-INF/components/nav-bar.xhtml" />
-
-	<div class="container chat-signin">
+	
+<!-- 	<div class="container chat-signin">
 		<form class="form-signin">
 			<h2 class="form-signin-heading">Chat sign in</h2>
 			<label for="nickname">Nickname</label>
@@ -34,10 +36,12 @@
 				</div>
 				<button class="btn btn-large btn-primary" type="submit" id="enterRoom">Sign in</button>
 		</form>
-	</div>
+	</div> -->
 	<!-- /container -->
+	<h:outputText id="nickname">#{ chatBean.userId }</h:outputText>
 
 	<div class="container chat-wrapper">
+	
 		<h:form id="do-chat">
 			<h2 class="alert alert-success"></h2>
 			<table id="response" class="table table-bordered"></table>

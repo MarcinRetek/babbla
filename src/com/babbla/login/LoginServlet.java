@@ -1,7 +1,7 @@
 package com.babbla.login;
 
 import java.io.IOException;
-import java.io.PrintWriter;
+import java.net.URLEncoder;
 
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
@@ -14,57 +14,51 @@ import com.babbla.exceptions.ValidateException;
 import com.babbla.interfaces.LocalUser;
 import com.babbla.models.User;
 
-/**
- * Servlet implementation class loginServlet
- */
 @WebServlet("/loginServlet")
 public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    @EJB
-    LocalUser userEJB;
-    
-    public LoginServlet() {
-        super();
-    }
 
-	
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	@EJB
+	LocalUser userEJB;
+
+	public LoginServlet() {
+		super();
+	}
+
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
-	
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 
 		String username = request.getParameter("username");
 		String email = request.getParameter("email");
-				
+
 		User user = new User();
 		user.setName(username);
 		user.setEmail(email);
-		
+
 		String url = request.getRequestURL().toString();
 		String baseURL = url.substring(0, url.length() - request.getRequestURI().length()) + request.getContextPath();
-		
+
 		try {
 			userEJB.validateUser(user);
 			if (userEJB.saveUser(user) != null) {
 				response.sendRedirect(baseURL + "/faces/chat.xhtml");
-				//TODO: check session here.
-			}
-			else{
-				System.out.println("ELSE");
+				// TODO: check session here.
+			} else {
+				// TODO: check why else is now working
 				response.sendRedirect(baseURL + "/faces/error.xhtml");
-				//TODO: check why else is now working
 
 			}
-			
+
 		} catch (ValidateException e) {
 			e.getMessage();
-		}		
-		
-		
+		}
+
 	}
 
 }

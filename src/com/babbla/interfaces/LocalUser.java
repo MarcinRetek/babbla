@@ -17,6 +17,8 @@ public interface LocalUser {
 	void validateUser(User user) throws ValidateException;
 	
 	boolean hasUniqueEmail(User user);
+	
+	User getUserById(int id);
 
 		
 }

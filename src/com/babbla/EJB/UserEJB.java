@@ -42,5 +42,10 @@ public class UserEJB implements LocalUser {
 	public List<User> getAll() {
 		return userDao.getAll();
 	}
+
+	@Override
+	public User getUserById(int id) {
+		return userDao.getUserById(id);
+	}
 	
 }
