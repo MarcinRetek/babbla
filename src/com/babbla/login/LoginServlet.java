@@ -52,13 +52,7 @@ public class LoginServlet extends HttpServlet {
 			if (userEJB.saveUser(user) != null) {
 				response.sendRedirect(baseURL + "/faces/chat.xhtml");
 			}else{
-				
-				//TODO: HANDLE THIS - NOT WORKING!
-				
-				
-				//response.sendRedirect(baseURL + "/faces/error.xhtml");
-				PrintWriter writer = response.getWriter();	
-				writer.println("You already exist");
+				System.out.println("inen i elsen");
 				
 			}
 			

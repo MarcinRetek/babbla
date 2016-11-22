@@ -5,21 +5,34 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Babbla</title>
-<meta name="google-signin-scope" content="profile email"></meta>
-<meta name="google-signin-client_id" content="660649166502-qljiqonknrnituk0pm2o33ajl4ne6qif.apps.googleusercontent.com"></meta>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"></link>
+<meta name="google-signin-scope" content="profile email">
+<meta name="google-signin-client_id" content="660649166502-qljiqonknrnituk0pm2o33ajl4ne6qif.apps.googleusercontent.com">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> 
 	<script src="https://apis.google.com/js/platform.js"></script>
 	<script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-<script src="resources/JS/login-script.js"></script>
+	<script src="resources/JS/login-script.js"></script>
+	<link rel="stylesheet" href="resources/CSS/stylesheet.css">
 </head>
+
 <body>
 
-			<div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>
-
+	  <nav class ="navbar navbar-default">
+        <div class="title">
+            <a class="navbar-brand" href="index.html">Babbla</a>
+        </div>
+        <div class="navbar-header">
+            <a class="navbar-brand" href="index.html">Hem</a>
+        </div>
+        <ul class="nav navbar-nav">
+            <li><a href="chat.html">Chat</a></li>
+            <li><a href="#" onclick="signOut();">Sign out</a></li>            
+        </ul>       
+        <div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>
+    	</nav>
 
 	<form id="user-form" action="loginServlet" method="post">
-		<input type="text" name="username" id="username"/>
-		<input type="text" name="email" id="email"/>
+		<input type="hidden" name="username" id="username"/>
+		<input type="hidden" name="email" id="email"/>
 		<input type="submit" value="Register"/>
 	</form>
 
