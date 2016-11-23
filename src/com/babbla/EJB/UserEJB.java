@@ -9,6 +9,7 @@ import com.babbla.backingbeans.LoginUserBean;
 import com.babbla.dao.UserDAO;
 import com.babbla.exceptions.ValidateException;
 import com.babbla.interfaces.LocalUser;
+import com.babbla.models.Message;
 import com.babbla.models.User;
 
 @Stateless
@@ -65,5 +66,6 @@ public class UserEJB implements LocalUser {
 	public List<User> getListedUsersByEmail(String email) {
 		return null;
 	}
+
 	
 }

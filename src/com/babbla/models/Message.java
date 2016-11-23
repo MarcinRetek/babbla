@@ -9,13 +9,15 @@ import javax.persistence.*;
  * 
  */
 @Entity
+@Table(name="messages")
 @NamedQuery(name="Message.findAll", query="SELECT m FROM Message m")
 public class Message implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
-
+	
 	private String content;
 
 	//bi-directional many-to-one association to User
@@ -50,4 +52,5 @@ public class Message implements Serializable {
 		this.user = user;
 	}
 
+	
 }
