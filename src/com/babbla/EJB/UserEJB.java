@@ -52,13 +52,8 @@ public class UserEJB implements LocalUser {
 	}
 
 	@Override
-	public void loginUser(String name, String email, LoginUserBean loginUserBean) {
-		userDao.getUserByEmail(email);
-	}
-
-	@Override
-	public User getUserByEmail(String email) {
-		return userDao.getUserByEmail(email);
+	public User getUserByEmail(User user) {
+		return userDao.getUserByEmail(user);
 	}
 
 	@Override

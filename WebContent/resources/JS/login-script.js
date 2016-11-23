@@ -4,13 +4,6 @@ var isUserLoggedIn = false
 function startUp() {
 	var hideContent = document.getElementById('reg-div');
 	hideContent.style.display = 'none';	
-    
-//	if(isUserLoggedIn = true ){
-//    	var btn = document.getElementById("registerBtn");
-//    	btn.disabled = true;
-//    }else{
-//    	btn.disabled = false;
-//    }
 }
 
 function onSignIn(googleUser) {
@@ -20,7 +13,7 @@ function onSignIn(googleUser) {
 
     var profile = googleUser.getBasicProfile();
 
-    console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
+    console.log('ID: ' + profile.getId()); 
     console.log('Name: ' + profile.getName());
     console.log('Email: ' + profile.getEmail());
 
@@ -34,10 +27,6 @@ function onSignIn(googleUser) {
     
     var emailInput = document.getElementById("email");
     emailInput.value = emailInput.value = user.email;
-    
-    
-  
-
 }
 
 

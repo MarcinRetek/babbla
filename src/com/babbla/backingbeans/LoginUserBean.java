@@ -1,38 +1,45 @@
 package com.babbla.backingbeans;
 
 import java.io.Serializable;
+import java.util.Map;
 
-import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
+import javax.faces.bean.ManagedProperty;
+import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.inject.Named;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import com.babbla.interfaces.LocalUser;
+import com.babbla.models.User;
+
 
 @Named(value="loginUserBean")
 @SessionScoped
 public class LoginUserBean implements Serializable{
+	
 
 	private static final long serialVersionUID = 1899450248532258499L;
 	
 	private String name;
 	private String email;
-	private UserBean user;
+	private User loggedInUser;
 	
 	@EJB
 	LocalUser userEJB;
 	
-	@PostConstruct
-	public void init(){
-	    FacesContext.getCurrentInstance().getExternalContext().getSession(true);
-		System.out.println("HEJ: " + getName());
-		doLogin();
+	public void doLogin(){
+		
+		ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
+		Map<String, Object> sessionMap = externalContext.getSessionMap();
+		sessionMap.put("user", loggedInUser);
+		
 	}
 	
-	public void doLogin(){
-		System.out.println("DO LOGIN");
-		userEJB.loginUser(name, email,this);
+	public void doLogout(){
+		//TODO: handle this
 	}
 	
 	public String getName() {
@@ -47,12 +54,13 @@ public class LoginUserBean implements Serializable{
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public UserBean getUser() {
-		return user;
+
+	public User getLoggedInUser() {
+		return loggedInUser;
 	}
-	public void setUser(UserBean user) {
-		this.user = user;
+
+	public void setLoggedInUser(User loggedInUser) {
+		this.loggedInUser = loggedInUser;
 	}
-	
 	
 }

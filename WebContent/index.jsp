@@ -30,12 +30,13 @@
 		<li><a href="#" onclick="signOut();">Sign out</a></li>
 	</ul>
 	<div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>
+	
 	<div id="reg-div">
 		<form id="user-form" action="loginServlet" method="post">
 
-			<input type="hidden" name="username" id="username" /> <input
-				type="hidden" name="email" id="email" /> <input type="submit"
-				value="Register" id="registerBtn" />
+			<input type="hidden" name="username" id="username" /> 
+			<input	type="hidden" name="email" id="email" /> 
+			<input type="submit" value="Register" id="registerBtn" />
 
 		</form>
 	</div>
@@ -46,6 +47,8 @@
 		<p>${param.message}</p>
 
 		<h3>The Babbla Community</h3>
+		
+		<a href="error.xhtml">LINK</a>
 
 	</div>
 

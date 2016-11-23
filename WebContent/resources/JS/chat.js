@@ -7,7 +7,6 @@
 	var room = 'java';
  
 	function onMessageReceived(evt) {
-		//var msg = eval('(' + evt.data + ')');
 		var msg = JSON.parse(evt.data); // native API
 		var $messageLine = $('<h4>' + msg.sender + ' | <em>' + msg.received + '</em></h4>'
 				+ '<p> '+ msg.message +' </p><hr>');
@@ -30,14 +29,7 @@
 		wsocket = new WebSocket(serviceLocation + room);
 		wsocket.onmessage = onMessageReceived;
 	}
- 
-//	function leaveRoom() {
-//		wsocket.close();
-//		$chatWindow.empty();
-//		$('.chat-wrapper').hide();
-//		$('.chat-signin').show();
-//		$nickName.focus();
-//	}
+
 	
 	function scrollToChatContainerBottom() {
 		$('#response').stop().animate({
@@ -50,25 +42,12 @@
 		$nickName = $('#nickname');
 		$message = $('#message');
 		$chatWindow = $('#response');
-		//$('.chat-wrapper').hide();
 		$nickName.focus();
- 
-//		$('#enterRoom').click(function(evt) {
-//			evt.preventDefault();
-//			connectToChatserver();
-//			$('.chat-wrapper h2').text('Chat # '+$nickName.val() + "@" + room);
-//			$('.chat-signin').hide();
-//			$('.chat-wrapper').show();
-//			$message.focus();
-//		});
-		
+
 		$('#do-chat').submit(function(evt) {
 			evt.preventDefault();
 			sendMessage()
 		});
  
-//		$('#leave-room').click(function(){
-//			leaveRoom();
-//		});
 	});
 /* ]]> */

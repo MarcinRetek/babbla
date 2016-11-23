@@ -19,10 +19,8 @@ public interface LocalUser {
 	User getUserById(int id);
 
 	boolean validateUser(User user);
-
-	void loginUser(String name, String email, LoginUserBean loginUserBean);
 	
-	User getUserByEmail(String email);
+	User getUserByEmail(User user);
 	
 	List<User> getListedUsersByEmail(String email);
 		
