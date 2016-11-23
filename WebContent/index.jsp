@@ -48,7 +48,7 @@
 
 		<h3>The Babbla Community</h3>
 		
-		<a href="error.xhtml">LINK</a>
+		<a href="list-users.xhtml">LINK</a>
 
 	</div>
 

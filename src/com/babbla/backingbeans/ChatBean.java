@@ -1,7 +1,16 @@
 package com.babbla.backingbeans;
 
+
 import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+
+import javax.annotation.PostConstruct;
+import javax.faces.context.FacesContext;
+
 import javax.inject.Named;
 
 import com.babbla.interfaces.LocalChat;
@@ -11,7 +20,7 @@ import com.babbla.models.User;
 @Named(value="chatBean")
 @RequestScoped
 public class ChatBean {
-	
+		
 	private String content;
 	
 	@EJB
@@ -31,13 +40,28 @@ public class ChatBean {
 		return "";
 	}
 
+
 	public String getContent() {
 		return content;
 	}
 
 	public void setContent(String content) {
 		this.content = content;
-	}
+
+	}/*
+	public List<Chat> getLinks() {
+		List<Chat> links = new ArrayList<>();
+		links.add(new Chat("main","r"));
+		
+		for(User user : userEJB.getAll()) {
+			links.add(new Chat(user.getName(), "u"+user.getId()));
+			for (int i = 0; i < links.size(); i++) {
+				System.out.println(links.get(i));
+			}
+		}
+		return links;
+
+	}*/
 
 
 }

@@ -57,10 +57,8 @@ public class LoginServlet extends HttpServlet {
 	}
 	
 	public void setUserSession(String username, String email, User user) {
-		
 		LoginUserBean loginUserBean = new LoginUserBean();
 		
-		System.out.println("USER SESSION STARTED");
 		loginUserBean.setName(username);
 		loginUserBean.setEmail(email);
 		loginUserBean.setLoggedInUser(user);

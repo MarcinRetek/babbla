@@ -31,11 +31,9 @@ public class LoginUserBean implements Serializable{
 	LocalUser userEJB;
 	
 	public void doLogin(){
-		
 		ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
 		Map<String, Object> sessionMap = externalContext.getSessionMap();
 		sessionMap.put("user", loggedInUser);
-		
 	}
 	
 	public void doLogout(){
