@@ -20,6 +20,7 @@
 	function sendMessage() {
 		var msg = '{"message":"' + $message.val() + '", "sender":"'
 				+ $nickName.val() + '", "received":""}';
+		console.log($nickName.val());
 		wsocket.send(msg);
 		$message.val('').focus();
 	}
@@ -43,7 +44,6 @@
 		$message = $('#message');
 		$chatWindow = $('#response');
 		$nickName.focus();
-
 		$('#do-chat').submit(function(evt) {
 			evt.preventDefault();
 			sendMessage()
