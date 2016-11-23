@@ -19,10 +19,14 @@ public class User implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
+	@Column(unique=true, nullable=false)
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
 
+	@Column(name="email" ,nullable=false)
 	private String email;
 
+	@Column(name="name", nullable=false)
 	private String name;
 
 	//bi-directional many-to-one association to Message

@@ -20,6 +20,8 @@
 	function sendMessage() {
 		var msg = '{"message":"' + $message.val() + '", "sender":"'
 				+ $nickName.val() + '", "received":""}';
+		
+		console.log($message.val())
 		wsocket.send(msg);
 		$message.val('').focus();
 	}

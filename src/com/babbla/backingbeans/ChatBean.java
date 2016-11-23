@@ -1,46 +1,43 @@
 package com.babbla.backingbeans;
 
-import java.util.Map;
-
-import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
-import javax.faces.context.FacesContext;
+import javax.enterprise.context.RequestScoped;
+import javax.inject.Named;
 
-import com.babbla.interfaces.LocalUser;
+import com.babbla.interfaces.LocalChat;
+import com.babbla.models.Message;
 import com.babbla.models.User;
 
+@Named(value="chatBean")
+@RequestScoped
 public class ChatBean {
 	
-	private String chatId;
+	private String content;
 	
 	@EJB
-	LocalUser userEJB;
+	LocalChat chatEJB;
 	
-	@PostConstruct
-	public void init(){
-		Map<String, String> params =  FacesContext.getCurrentInstance()
-				.getExternalContext()
-				.getRequestParameterMap();
-		if(params.get("username")!=null) {
-			chatId = params.get("username"); 
-		} else {
-			chatId = "none";
-		}	}
-	
-	public User chatWith(){
-		if(chatId.substring(0, 1).equals("u")) {
-			int userId = Integer.parseInt(chatId.substring(1));
-			return userEJB.getUserById(userId);
-		}
-		return null;
+	public String saveMessage(){
+		System.out.println("Inne i save metoden");
+		User user = new User();
+		user.setEmail("marcin@hehjehj.com");
+		user.setName("Marcin");
+		
+		Message messageToSave = new Message();
+		messageToSave.setContent(content);
+		messageToSave.setUser(user);
+		chatEJB.saveMessage(messageToSave);
+		System.out.println("Efter");
+		return "";
 	}
 
-	public String getChatId() {
-		return chatId;
+	public String getContent() {
+		return content;
 	}
 
-	public void setChatId(String chatId) {
-		this.chatId = chatId;
+	public void setContent(String content) {
+		this.content = content;
 	}
+
 
 }
