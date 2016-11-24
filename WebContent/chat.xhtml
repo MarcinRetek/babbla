@@ -32,10 +32,9 @@
 				<h:panelGroup class="controls">
 					<h:inputText value="#{ chatBean.content }" type="text" class="input-block-level"
 						placeholder="Your message..." id="message" style="height: 60px" />
-					<h:commandButton action="#{ chatBean.saveMessage }" type="submit"  class="btn btn-large btn-block btn-primary"
+					<h:commandButton action="#{ chatBean.saveMessage() }" class="btn btn-large btn-block btn-primary"
 						value="Send message" />
-					<button class="btn btn-large btn-block" type="button"
-						id="leave-room">Leave room</button>
+
 				</h:panelGroup>
 
 		</h:form>

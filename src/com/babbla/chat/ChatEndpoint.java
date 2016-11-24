@@ -12,11 +12,17 @@ import javax.websocket.Session;
 import javax.websocket.server.PathParam;
 import javax.websocket.server.ServerEndpoint;
 
+import com.babbla.interfaces.LocalChat;
 import com.babbla.interfaces.LocalUser;
+import com.babbla.models.Message;
+import com.babbla.models.User;
 
 @ServerEndpoint(value = "/chat/{room}", encoders = ChatMessageEncoder.class, decoders = ChatMessageDecoder.class)
 public class ChatEndpoint {
 	private final Logger log = Logger.getLogger(getClass().getName());
+	
+	@EJB
+	LocalChat chatEJB;
  
 	@OnOpen
 	public void open(final Session session, @PathParam("room") final String room) {
@@ -29,14 +35,25 @@ public class ChatEndpoint {
 		String room = (String) session.getUserProperties().get("room");
 		try {
 			for (Session s : session.getOpenSessions()) {
-				if (s.isOpen()
-						&& room.equals(s.getUserProperties().get("room"))) {
+				if (s.isOpen() && room.equals(s.getUserProperties().get("room"))) {
 					s.getBasicRemote().sendObject(chatMessage);
+					save(chatMessage);
 				}
 			}
 		} catch (IOException | EncodeException e) {
 			log.log(Level.WARNING, "onMessage failed", e);
 		}
+	}
+	
+	public void save(ChatMessage chatMessage){
+		User user = new User();
+		user.setEmail("marcin@hehjehj.com");
+		user.setName("Marcin");
+		
+		Message message = new Message();
+		message.setContent(chatMessage.getMessage());
+		message.setUser(user);
+		chatEJB.saveMessage(message);
 	}
 }
 

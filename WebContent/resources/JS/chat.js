@@ -26,7 +26,7 @@
 	}
  
 	function connectToChatserver() {
-		room = $('#chatroom option:selected').val();
+		//room = $('#chatroom option:selected').val();
 		wsocket = new WebSocket(serviceLocation + room);
 		wsocket.onmessage = onMessageReceived;
 	}
@@ -41,11 +41,11 @@
 	$(document).ready(function() {
 		connectToChatserver();
 		$nickName = $('#nickname');
-		$message = $('#message');
+		$message = $('#do-chat\\:message');
 		$chatWindow = $('#response');
 		$nickName.focus();
 		$('#do-chat').submit(function(evt) {
-			evt.preventDefault();
+			//evt.preventDefault();
 			sendMessage()
 		});
  

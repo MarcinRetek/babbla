@@ -1,11 +1,19 @@
 package com.babbla.chat;
 
+import javax.ejb.EJB;
 import javax.json.Json;
 import javax.websocket.EncodeException;
 import javax.websocket.Encoder;
 import javax.websocket.EndpointConfig;
 
+import com.babbla.interfaces.LocalChat;
+import com.babbla.models.Message;
+import com.babbla.models.User;
+
 public class ChatMessageEncoder implements Encoder.Text<ChatMessage> {
+	
+	@EJB
+	LocalChat chatEJB;
 	
 	@Override
 	public void init(final EndpointConfig config) {
