@@ -45,7 +45,7 @@
 		$chatWindow = $('#response');
 		$nickName.focus();
 		$('#do-chat').submit(function(evt) {
-			//evt.preventDefault();
+			evt.preventDefault();
 			sendMessage()
 		});
  

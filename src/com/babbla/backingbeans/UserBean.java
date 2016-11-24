@@ -16,6 +16,7 @@ import com.babbla.models.User;
 @RequestScoped
 public class UserBean {
 	
+	//TODO: REMOVE CLASS?
 	@EJB
 	private LocalUser userEJB;	
 	
@@ -25,23 +26,9 @@ public class UserBean {
 	
 	@PostConstruct
 	public void init(){
-		Map<String, String> params =  FacesContext.getCurrentInstance()
-				.getExternalContext()
-				.getRequestParameterMap();
-		if(params.get("username")!=null) {
-			chatId = params.get("username"); 
-		} else {
-			chatId = "none";
-		}	}
-	
-	public User chatWith(){
-		if(chatId.substring(0, 1).equals("u")) {
-			int userId = Integer.parseInt(chatId.substring(1));
-			return userEJB.getUserById(userId);
-		}
-		return null;
+		
 	}
-	
+
 	public List<User> getAll() {
 		return userEJB.getAll();
 	}

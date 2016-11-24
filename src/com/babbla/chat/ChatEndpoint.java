@@ -12,6 +12,7 @@ import javax.websocket.Session;
 import javax.websocket.server.PathParam;
 import javax.websocket.server.ServerEndpoint;
 
+import com.babbla.backingbeans.LoginUserBean;
 import com.babbla.interfaces.LocalChat;
 import com.babbla.interfaces.LocalUser;
 import com.babbla.models.Message;
@@ -33,11 +34,11 @@ public class ChatEndpoint {
 	@OnMessage
 	public void onMessage(final Session session, final ChatMessage chatMessage) {
 		String room = (String) session.getUserProperties().get("room");
+		save(chatMessage);
 		try {
 			for (Session s : session.getOpenSessions()) {
 				if (s.isOpen() && room.equals(s.getUserProperties().get("room"))) {
 					s.getBasicRemote().sendObject(chatMessage);
-					save(chatMessage);
 				}
 			}
 		} catch (IOException | EncodeException e) {
@@ -53,7 +54,9 @@ public class ChatEndpoint {
 		Message message = new Message();
 		message.setContent(chatMessage.getMessage());
 		message.setUser(user);
+		System.out.println("Created Message");
 		chatEJB.saveMessage(message);
+		System.out.println("Saved message");
 	}
 }
 

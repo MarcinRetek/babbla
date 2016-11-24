@@ -58,6 +58,7 @@ public class LoginUserBean implements Serializable{
 	}
 
 	public void setLoggedInUser(User loggedInUser) {
+		System.out.println(loggedInUser);
 		this.loggedInUser = loggedInUser;
 	}
 	
