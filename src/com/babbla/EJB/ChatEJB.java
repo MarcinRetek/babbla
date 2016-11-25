@@ -6,6 +6,7 @@ import javax.ejb.Stateless;
 import com.babbla.dao.ChatDAO;
 import com.babbla.interfaces.LocalChat;
 import com.babbla.models.Message;
+import com.babbla.models.User;
 
 @Stateless
 public class ChatEJB implements LocalChat{
@@ -15,7 +16,13 @@ public class ChatEJB implements LocalChat{
 
 	@Override
 	public Message saveMessage(Message messageToSave) {
-		return chatDAO.saveMessage(messageToSave);
+		//logic check here. 
+		if(){
+			return chatDAO.saveMessage(messageToSave);
+		}
+		System.out.println("Not");
+		return null;
+		
 	}
 	
 	

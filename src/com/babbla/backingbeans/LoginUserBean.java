@@ -14,6 +14,7 @@ import javax.servlet.http.HttpSession;
 
 import com.babbla.interfaces.LocalUser;
 import com.babbla.models.User;
+import com.sun.xml.wss.impl.callback.DecryptionKeyCallback.PrivateKeyRequest;
 
 
 @Named(value="loginUserBean")
@@ -25,7 +26,7 @@ public class LoginUserBean implements Serializable{
 	
 	private String name;
 	private String email;
-	private User loggedInUser;
+	private static User loggedInUser;
 	
 	@EJB
 	LocalUser userEJB;
@@ -53,13 +54,12 @@ public class LoginUserBean implements Serializable{
 		this.email = email;
 	}
 
-	public User getLoggedInUser() {
+	public static User getLoggedInUser() {
 		return loggedInUser;
 	}
 
 	public void setLoggedInUser(User loggedInUser) {
-		System.out.println(loggedInUser);
 		this.loggedInUser = loggedInUser;
 	}
-	
+
 }

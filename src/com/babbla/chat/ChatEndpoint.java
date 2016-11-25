@@ -1,6 +1,7 @@
 package com.babbla.chat;
 
 import java.io.IOException;
+import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -47,16 +48,13 @@ public class ChatEndpoint {
 	}
 	
 	public void save(ChatMessage chatMessage){
-		User user = new User();
-		user.setEmail("marcin@hehjehj.com");
-		user.setName("Marcin");
+		User user = LoginUserBean.getLoggedInUser();
 		
 		Message message = new Message();
 		message.setContent(chatMessage.getMessage());
 		message.setUser(user);
-		System.out.println("Created Message");
+		//saveMessage requires logic check
 		chatEJB.saveMessage(message);
-		System.out.println("Saved message");
 	}
 }
 
