@@ -16,12 +16,10 @@ public class ChatEJB implements LocalChat{
 
 	@Override
 	public Message saveMessage(Message messageToSave) {
-		//logic check here. 
-		if(){
-			return chatDAO.saveMessage(messageToSave);
-		}
-		System.out.println("Not");
-		return null;
+		
+		return chatDAO.saveMessage(messageToSave);
+		
+		
 		
 	}
 	

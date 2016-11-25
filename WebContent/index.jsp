@@ -22,9 +22,7 @@
 	<div class="title">
 		<a class="navbar-brand" href="index.jsp">Babbla</a>
 	</div>
-	<div class="navbar-header">
-		<a class="navbar-brand" href="index.jsp">Hem</a>
-	</div>
+	
 	<ul class="nav navbar-nav">
 		<li><a href="chat.xhtml">Chat</a></li>
 		<li><a href="#" onclick="signOut();">Sign out</a></li>
