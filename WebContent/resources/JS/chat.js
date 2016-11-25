@@ -41,7 +41,7 @@
 	$(document).ready(function() {
 		connectToChatserver();
 		$nickName = $('#nickname');
-		$message = $('#do-chat\\:message');
+		$message = $('#message');
 		$chatWindow = $('#response');
 		$nickName.focus();
 		$('#do-chat').submit(function(evt) {

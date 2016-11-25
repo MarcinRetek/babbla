@@ -23,21 +23,18 @@
 	
 	<h:inputHidden value="#{ sessionScope.user.name }" id="nickname"></h:inputHidden>
 				
-		<h:form id="do-chat">
+		<form id="do-chat">
 			<h2 class="alert alert-success"></h2>
 			<table id="response" class="table table-bordered"></table>
 			
 				<legend>Enter your message..</legend>
+				
+				<div class="controls">
+					<input type="text" class="input-block-level" placeholder="Your message..." id="message" style="height: 60px" />
+					<input class="btn btn-large btn-block btn-primary" type="submit" value="Send message"/>	
+				</div>
 
-				<h:panelGroup class="controls">
-					<h:inputText value="#{ chatBean.content }" type="text" class="input-block-level"
-						placeholder="Your message..." id="message" style="height: 60px" />
-					<h:commandButton action="#{ chatBean.saveMessage() }" class="btn btn-large btn-block btn-primary"
-						value="Send message" />
-
-				</h:panelGroup>
-
-		</h:form>
+		</form>
 	</div>
 
 </h:body>
