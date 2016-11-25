@@ -30,9 +30,6 @@ public class ChatEndpoint {
 	@EJB
 	LocalUser userEJB;
 	
-	@Inject
-	LoginUserBean loginUserBean;
- 
 	@OnOpen
 	public void open(final Session session, @PathParam("room") final String room) {
 		log.info("session openend and bound to room: " + room);
@@ -56,7 +53,7 @@ public class ChatEndpoint {
 	
 
 	public void save(ChatMessage chatMessage){		
-		User user = loginUserBean.getLoggedInUser();		
+		User user = LoginUserBean.getLoggedInUser();		
 				
 		List<User> list = userEJB.getAll();		
 		
