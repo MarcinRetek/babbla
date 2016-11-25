@@ -25,7 +25,7 @@ public class LoginUserBean implements Serializable{
 	
 	private String name;
 	private String email;
-	private User loggedInUser;
+	private static User loggedInUser;
 	
 	@EJB
 	LocalUser userEJB;
@@ -53,7 +53,7 @@ public class LoginUserBean implements Serializable{
 		this.email = email;
 	}
 
-	public User getLoggedInUser() {
+	public static User getLoggedInUser() {
 		return loggedInUser;
 	}
 

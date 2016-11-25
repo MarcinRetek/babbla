@@ -1,16 +1,22 @@
 package com.babbla.chat;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import javax.ejb.EJB;
+import javax.inject.Inject;
 import javax.websocket.EncodeException;
 import javax.websocket.OnMessage;
 import javax.websocket.OnOpen;
 import javax.websocket.Session;
 import javax.websocket.server.PathParam;
 import javax.websocket.server.ServerEndpoint;
+
+import org.eclipse.persistence.internal.queries.ArrayListContainerPolicy;
+import org.hibernate.internal.CriteriaImpl.Subcriteria;
 
 import com.babbla.backingbeans.LoginUserBean;
 import com.babbla.interfaces.LocalChat;
@@ -24,6 +30,12 @@ public class ChatEndpoint {
 	
 	@EJB
 	LocalChat chatEJB;
+	
+	@EJB
+	LocalUser userEJB;
+	
+	@Inject
+	LoginUserBean loginUserBean;
  
 	@OnOpen
 	public void open(final Session session, @PathParam("room") final String room) {
@@ -46,10 +58,28 @@ public class ChatEndpoint {
 		}
 	}
 	
-	public void save(ChatMessage chatMessage){
-		User user = new User();
-		user.setEmail("marcin@hehjehj.com");
-		user.setName("Marcin");
+	public void save(ChatMessage chatMessage){		
+		User user = loginUserBean.getLoggedInUser();		
+		
+		System.out.println("getEmail " + user.getEmail());		
+		
+		List<User> list = userEJB.getAll();
+		
+		System.out.println("listemail " + list.get(0).getEmail());
+		
+		for(int i = 0; i < list.size(); i++){
+			if(list.get(i).getEmail().equals(user.getEmail())){							
+				user.setId(list.get(i).getId());
+			}else{
+				System.out.println("emailen finns ej i databasen");
+			}
+		}
+		
+		int tempId = user.getId();
+		
+		user.setId(tempId);
+		user.setEmail(user.getEmail());
+		user.setName(user.getName());		
 		
 		Message message = new Message();
 		message.setContent(chatMessage.getMessage());
