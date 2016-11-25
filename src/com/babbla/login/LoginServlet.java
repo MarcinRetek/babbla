@@ -40,7 +40,7 @@ public class LoginServlet extends HttpServlet {
 		user.setName(username);
 		user.setEmail(email);
 		
-		setUserSession(username, email, user);
+		setUserSession(user);
 
 		String url = request.getRequestURL().toString();
 		String baseURL = url.substring(0, url.length() - request.getRequestURI().length()) + request.getContextPath();
@@ -49,17 +49,15 @@ public class LoginServlet extends HttpServlet {
 		if(userEJB.validateUser(user)){
 			response.sendRedirect(baseURL + "/faces/index.jsp");
 		}else{
-			setUserSession(username, email, user);
+			setUserSession(user);
 			String message = "User already exists in database";
 			response.sendRedirect("index.jsp?message=" + URLEncoder.encode(message, "UTF-8"));
 		}
 			
 	}
 	
-	public void setUserSession(String username, String email, User user) {
+	public void setUserSession(User user) {
 		LoginUserBean loginUserBean = new LoginUserBean();		
-		loginUserBean.setName(username);
-		loginUserBean.setEmail(email);
 		loginUserBean.setLoggedInUser(user);
 		loginUserBean.doLogin();
 	}

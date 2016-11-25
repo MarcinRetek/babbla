@@ -1,7 +1,6 @@
 package com.babbla.chat;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -14,9 +13,6 @@ import javax.websocket.OnOpen;
 import javax.websocket.Session;
 import javax.websocket.server.PathParam;
 import javax.websocket.server.ServerEndpoint;
-
-import org.eclipse.persistence.internal.queries.ArrayListContainerPolicy;
-import org.hibernate.internal.CriteriaImpl.Subcriteria;
 
 import com.babbla.backingbeans.LoginUserBean;
 import com.babbla.interfaces.LocalChat;
@@ -58,14 +54,11 @@ public class ChatEndpoint {
 		}
 	}
 	
+
 	public void save(ChatMessage chatMessage){		
 		User user = loginUserBean.getLoggedInUser();		
-		
-		System.out.println("getEmail " + user.getEmail());		
-		
-		List<User> list = userEJB.getAll();
-		
-		System.out.println("listemail " + list.get(0).getEmail());
+				
+		List<User> list = userEJB.getAll();		
 		
 		for(int i = 0; i < list.size(); i++){
 			if(list.get(i).getEmail().equals(user.getEmail())){							
@@ -79,15 +72,12 @@ public class ChatEndpoint {
 		
 		user.setId(tempId);
 		user.setEmail(user.getEmail());
-		user.setName(user.getName());		
+		user.setName(user.getName());	
 		
 		Message message = new Message();
 		message.setContent(chatMessage.getMessage());
 		message.setUser(user);
-		System.out.println("Created Message");
+		//saveMessage requires logic check
 		chatEJB.saveMessage(message);
-		System.out.println("Saved message");
 	}
 }
-
-
