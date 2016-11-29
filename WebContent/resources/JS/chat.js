@@ -5,6 +5,11 @@
 	var $message;
 	var $chatWindow;
 	var room = 'java';
+	var RSAKey;
+	var publicKeyString;
+	//var encryptionResult;
+	var encryptedMessage;
+	var decryptedMessage;
  
 	function onMessageReceived(evt) {
 		var msg = JSON.parse(evt.data); // native API
@@ -18,6 +23,12 @@
 		scrollToChatContainerBottom();
 	}
 	function sendMessage() {
+		var message = $message.val();
+		
+		//encryptedMessage = 
+		//	encryptMessage();
+		//console.log(encryptedMessage);
+		
 		var msg = '{"message":"' + $message.val() + '", "sender":"'
 				+ $nickName.val() + '", "received":""}';
 
@@ -44,10 +55,37 @@
 		$message = $('#message');
 		$chatWindow = $('#response');
 		$nickName.focus();
+		
+		generateKeys();
+		
 		$('#do-chat').submit(function(evt) {
 			evt.preventDefault();
-			sendMessage()
+			sendMessage();
 		});
  
 	});
+	
+	function generateKeys() {
+	  var passPhrase = "whats up";//$nickName.val();
+	  RSAKey = cryptico.generateRSAKey(passPhrase, 512);
+	  publicKeyString = cryptico.publicKeyString(RSAKey);
+	  
+	}
+	
+	function encryptMessage() {
+		var message = "hejhej";
+		var encryptionResult = cryptico.encrypt(message, publicKeyString);
+		encryptionResult.cipher;
+		console.log(encryptionResult.cipher);
+		return "1";//encryptionResult.cipher;
+		
+		//.cipher not working
+	}
+	
+	function decryptMessage() {
+      var decryptResult = cryptico.decrypt(encryptionResult.cipher, publicKeyString);
+      var text = decryptResult.plaintext;
+      //console.log(text);
+	}
+	
 /* ]]> */

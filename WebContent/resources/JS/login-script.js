@@ -1,5 +1,8 @@
 var isUserLoggedIn = false
-
+var passPhrase;
+var RSAKey;
+var publicKeyString;
+var encryptionResult;
 
 function startUp() {
 	var hideContent = document.getElementById('reg-div');
@@ -13,14 +16,12 @@ function onSignIn(googleUser) {
 
     var profile = googleUser.getBasicProfile();
 
-    console.log('ID: ' + profile.getId()); 
-    console.log('Name: ' + profile.getName());
-    console.log('Email: ' + profile.getEmail());
-
     var user = {
         username: profile.getName(),
         email: profile.getEmail()
     }
+    
+   // generateKeys(user.username);
     
     var userInput = document.getElementById("username");
     userInput.value = userInput.value = user.username;
@@ -39,9 +40,16 @@ function signOut() {
 
     });
 }
+/*
+function generateKeys(username) {
+	  var passPhrase = username;
+	  RSAKey = cryptico.generateRSAKey(passPhrase, 512);
+	  publicKeyString = cryptico.publicKeyString(RSAKey);
+	  var publicKey = document.getElementById("public-key");
+	  publicKey.value = publicKey.value = publicKeyString
+	}
 
-
-
+*/
 
 
 
