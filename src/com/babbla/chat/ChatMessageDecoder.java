@@ -35,7 +35,7 @@ public class ChatMessageDecoder implements Decoder.Text<ChatMessage> {
 		chatMessage.setMessage(obj.getString("message"));
 		chatMessage.setSender(obj.getString("sender"));
 		chatMessage.setReceived(new Date());
-	
+		chatMessage.setPublicKey(obj.getString("publicKey"));
 		return chatMessage;
 	}
  

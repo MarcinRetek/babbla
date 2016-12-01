@@ -25,9 +25,9 @@
 	<ui:include src="/WEB-INF/components/nav-bar.xhtml" />
 
 	<div class="container chat-wrapper">
-	
-	<h:inputHidden value="#{ sessionScope.user.name }" id="nickname"></h:inputHidden>	
-				
+	<h:inputHidden value="#{ sessionScope.user.name }" id="nickname"></h:inputHidden>
+	<button onclick="generateKeys()" value="1"></button>
+	<button onclick="generatePub()" value="2"></button>				
 		<form id="do-chat">
 			<h2 class="alert alert-success"></h2>
 			<table id="response" class="table table-bordered"></table>
@@ -41,7 +41,6 @@
 
 		</form>
 	</div>
-
 </h:body>
 
 </html>

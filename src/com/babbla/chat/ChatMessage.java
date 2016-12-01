@@ -8,6 +8,7 @@ public class ChatMessage {
 	private String message;
 	private String sender;
 	private Date received;
+	private String publicKey;
 	
 	public String getMessage() {
 		return message;
@@ -26,5 +27,11 @@ public class ChatMessage {
 	}
 	public void setSender(String sender) {
 		this.sender = sender;
+	}
+	public String getPublicKey() {
+		return publicKey;
+	}
+	public void setPublicKey(String publicKey) {
+		this.publicKey = publicKey;
 	}
 }

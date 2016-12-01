@@ -25,10 +25,12 @@ public class ChatMessageEncoder implements Encoder.Text<ChatMessage> {
  
 	@Override
 	public String encode(final ChatMessage chatMessage) throws EncodeException {
+		System.out.println("PUBKEY: " + chatMessage.getPublicKey());
 		return Json.createObjectBuilder()
 				.add("message", chatMessage.getMessage())
 				.add("sender", chatMessage.getSender())
-				.add("received", chatMessage.getReceived().toString()).build()
-				.toString();
+				.add("publicKey", chatMessage.getPublicKey())
+				.add("received", chatMessage.getReceived().toString())
+				.add("publicKey", chatMessage.getPublicKey()).build().toString();
 	}
 }
