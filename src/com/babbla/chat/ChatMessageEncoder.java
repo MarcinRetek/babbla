@@ -22,7 +22,8 @@ public class ChatMessageEncoder implements Encoder.Text<ChatMessage> {
 	@Override
 	public void destroy() {
 	}
- 
+	
+	//tar emot message och appendear ut det.
 	@Override
 	public String encode(final ChatMessage chatMessage) throws EncodeException {
 		return Json.createObjectBuilder()

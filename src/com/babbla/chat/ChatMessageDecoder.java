@@ -26,7 +26,9 @@ public class ChatMessageDecoder implements Decoder.Text<ChatMessage> {
 	@Override
 	public void destroy() {
 	}
- 
+	
+	
+	//Tar emot meddelnade från frontend o skickar rill encoder
 	@Override
 	public ChatMessage decode(final String textMessage) throws DecodeException {
 		ChatMessage chatMessage = new ChatMessage();

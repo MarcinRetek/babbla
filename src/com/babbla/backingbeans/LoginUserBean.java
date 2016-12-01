@@ -1,6 +1,7 @@
 package com.babbla.backingbeans;
 
 import java.io.Serializable;
+import java.util.List;
 import java.util.Map;
 
 import javax.ejb.EJB;
@@ -12,7 +13,9 @@ import javax.inject.Named;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import com.babbla.interfaces.LocalChat;
 import com.babbla.interfaces.LocalUser;
+import com.babbla.models.Message;
 import com.babbla.models.User;
 import com.sun.xml.wss.impl.callback.DecryptionKeyCallback.PrivateKeyRequest;
 
@@ -31,11 +34,15 @@ public class LoginUserBean implements Serializable{
 	@EJB
 	LocalUser userEJB;
 	
+
+	
 	public void doLogin(){
 		ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
 		Map<String, Object> sessionMap = externalContext.getSessionMap();
 		sessionMap.put("user", loggedInUser);
 	}
+	
+	
 	
 	public void doLogout(){
 		//TODO: handle this
