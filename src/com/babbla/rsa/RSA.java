@@ -23,43 +23,51 @@ import javax.crypto.BadPaddingException;
 import javax.crypto.Cipher;
 import javax.crypto.IllegalBlockSizeException;
 import javax.crypto.NoSuchPaddingException;
+import javax.ejb.EJB;
+
+
+import com.babbla.interfaces.LocalChat;
+
+
 
 public class RSA {
+	
+	@EJB
+	LocalChat chatEJB;	
+	
 	
 	private static final String PUBLIC_KEY_FILE = "Public.key";
 	private static final String PRIVATE_KEY_FILE = "Private.key";
 	
-	public static void main (String[] args) throws IOException {
+	public byte[] runKeyGenerator(String message) throws NoSuchAlgorithmException, IOException, InvalidKeySpecException {
+		System.out.println("---------GENERATE PUBLIC AND PRIVATE KEYS---------");
+		KeyPairGenerator keyPairGenerator = KeyPairGenerator.getInstance("RSA");
+		keyPairGenerator.initialize(2048);
+		KeyPair keyPair = keyPairGenerator.generateKeyPair();
+		PublicKey publicKey = keyPair.getPublic();
+		PrivateKey privateKey = keyPair.getPrivate();
+		System.out.println("---------PULLING OUT PARAMETERS WHICH MAKE KEYPAIRS---------");
+		KeyFactory keyFactory = KeyFactory.getInstance("RSA");
+		RSAPublicKeySpec rsaPubKeySpec = keyFactory.getKeySpec(publicKey, RSAPublicKeySpec.class);
+		RSAPrivateKeySpec rsaPrivKeySpec = keyFactory.getKeySpec(privateKey, RSAPrivateKeySpec.class);
 		
-		try {
-			System.out.println("---------GENERATE PUBLIC AND PRIVATE KEYS---------");
-			KeyPairGenerator keyPairGenerator = KeyPairGenerator.getInstance("RSA");
-			keyPairGenerator.initialize(2048);
-			KeyPair keyPair = keyPairGenerator.generateKeyPair();
-			PublicKey publicKey = keyPair.getPublic();
-			PrivateKey privateKey = keyPair.getPrivate();
-			System.out.println("---------PULLING OUT PARAMETERS WHICH MAKE KEYPAIRS---------");
-			KeyFactory keyFactory = KeyFactory.getInstance("RSA");
-			RSAPublicKeySpec rsaPubKeySpec = keyFactory.getKeySpec(publicKey, RSAPublicKeySpec.class);
-			RSAPrivateKeySpec rsaPrivKeySpec = keyFactory.getKeySpec(privateKey, RSAPrivateKeySpec.class);
-			
-			System.out.println("---------SAVING PUBLIC AND PRIVATE KEYS TO FILE---------");
-			RSA rsaObj = new RSA();
-			rsaObj.saveKeys(PUBLIC_KEY_FILE, rsaPubKeySpec.getModulus(), rsaPubKeySpec.getPublicExponent());
-			rsaObj.saveKeys(PRIVATE_KEY_FILE, rsaPrivKeySpec.getModulus(), rsaPrivKeySpec.getPrivateExponent());
-			
-			//Encrypt Data using Public key
-			byte[] encryptedData = rsaObj.encryptData("jkhjkjknjkhjhljk");
-			
-			//Decrypt Data using private key
-			rsaObj.decryptData(encryptedData);
-			
-			
-		} catch (NoSuchAlgorithmException | InvalidKeySpecException e) {
-			System.out.println(e);
-		}
+		System.out.println("---------SAVING PUBLIC AND PRIVATE KEYS TO FILE---------");
+		RSA rsaObj = new RSA();
+		rsaObj.saveKeys(PUBLIC_KEY_FILE, rsaPubKeySpec.getModulus(), rsaPubKeySpec.getPublicExponent());
+		rsaObj.saveKeys(PRIVATE_KEY_FILE, rsaPrivKeySpec.getModulus(), rsaPrivKeySpec.getPrivateExponent());
 		
+		//Encrypt Data using Public key
+		byte[] encryptedMessage = rsaObj.encryptData(message);
+		
+		
+		//Decrypt Data using private key
+		//rsaObj.decryptData(encryptedData);
+		
+		System.out.println("message " + message);
+		System.out.println("encmessage " + encryptedMessage);
+		return encryptedMessage;
 	}
+		
 
 	private void decryptData(byte[] data) throws IOException {
 		System.out.println("---------DECRYPTING STARTED---------");
@@ -78,10 +86,10 @@ public class RSA {
 	}
 	
 
-	private byte[] encryptData(String data) throws IOException {
+	private byte[] encryptData(String message) throws IOException {
 		System.out.println("---------ENCRYPTION STARTED---------");
-		System.out.println("Data before encryption : " + data);
-		byte[] dataToEncrypt = data.getBytes();
+		System.out.println("Data before encryption : " + message);
+		byte[] dataToEncrypt = message.getBytes();
 		byte[] encryptedData = null;
 		try {
 			PublicKey pubKey = readPublicKeyFromFile(this.PUBLIC_KEY_FILE);

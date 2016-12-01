@@ -10,7 +10,10 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name="messages")
-@NamedQuery(name="Message.findAll", query="SELECT m FROM Message m")
+@NamedQueries({
+	@NamedQuery(name="Message.findAll", query="SELECT n FROM Message n"),
+	@NamedQuery(name="Message.getMessageByUserId", query="SELECT m FROM Message m")
+})
 public class Message implements Serializable {
 	private static final long serialVersionUID = 1L;
 
@@ -53,5 +56,7 @@ public class Message implements Serializable {
 	public void setUser(User user) {
 		this.user = user;
 	}
+
+	
 
 }

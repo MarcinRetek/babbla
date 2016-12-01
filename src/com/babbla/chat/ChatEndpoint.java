@@ -1,6 +1,8 @@
 package com.babbla.chat;
 
 import java.io.IOException;
+import java.security.NoSuchAlgorithmException;
+import java.security.spec.InvalidKeySpecException;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -18,6 +20,7 @@ import com.babbla.interfaces.LocalChat;
 import com.babbla.interfaces.LocalUser;
 import com.babbla.models.Message;
 import com.babbla.models.User;
+import com.babbla.rsa.RSA;
 
 @ServerEndpoint(value = "/chat/{publicKey}", encoders = ChatMessageEncoder.class, decoders = ChatMessageDecoder.class)
 public class ChatEndpoint {
@@ -37,7 +40,6 @@ public class ChatEndpoint {
  
 	@OnMessage
 	public void onMessage(final Session session, final ChatMessage chatMessage) {
-		//String room = (String) session.getUserProperties().get("room");
 		//String publicKey = (String) session.getUserProperties().get("publicKey");
 		//save(chatMessage);
 		try {
@@ -50,31 +52,35 @@ public class ChatEndpoint {
 			log.log(Level.WARNING, "onMessage failed", e);
 		}
 	}
-	
 
-	public void save(ChatMessage chatMessage){		
-		User user = LoginUserBean.getLoggedInUser();		
-				
-		List<User> list = userEJB.getAll();		
-		
-		for(int i = 0; i < list.size(); i++){
-			if(list.get(i).getEmail().equals(user.getEmail())){							
-				user.setId(list.get(i).getId());
-			}else{
-				System.out.println("emailen finns ej i databasen");
-			}
-		}
-		
-		int tempId = user.getId();
-		
-		user.setId(tempId);
-		user.setEmail(user.getEmail());
-		user.setName(user.getName());	
-		
-		Message message = new Message();
-		message.setContent(chatMessage.getMessage());
-		message.setUser(user);
-		//saveMessage requires logic check
-		chatEJB.saveMessage(message);
-	}
+//	public void save(ChatMessage chatMessage) throws NoSuchAlgorithmException, InvalidKeySpecException, IOException{		
+//		User user = LoginUserBean.getLoggedInUser();		
+//				
+//		List<User> list = userEJB.getAll();		
+//		
+//		for(int i = 0; i < list.size(); i++){
+//			if(list.get(i).getEmail().equals(user.getEmail())){							
+//				user.setId(list.get(i).getId());
+//			}else{
+//				System.out.println("emailen finns ej i databasen");
+//			}
+//		}
+//		
+//		int tempId = user.getId();
+//		
+//		user.setId(tempId);
+//		user.setEmail(user.getEmail());
+//		user.setName(user.getName());	
+//		
+//		Message message = new Message();
+//		message.setContent(chatMessage.getMessage());
+//		message.setUser(user);
+//		//saveMessage requires logic check
+//		RSA rsa = new RSA();
+//		byte[] encryptedMsg = rsa.runKeyGenerator(message.getContent());
+//		String msgToString = encryptedMsg.toString();
+//		message.setContent(msgToString);
+//		
+//		chatEJB.saveMessage(message);
+//	}
 }
