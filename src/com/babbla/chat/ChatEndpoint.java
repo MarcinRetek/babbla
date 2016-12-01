@@ -42,7 +42,7 @@ public class ChatEndpoint {
 	@OnMessage
 	public void onMessage(final Session session, final ChatMessage chatMessage) throws NoSuchAlgorithmException, InvalidKeySpecException, IOException {
 		String room = (String) session.getUserProperties().get("room");
-		save(chatMessage);
+		//save(chatMessage);
 		try {
 			for (Session s : session.getOpenSessions()) {
 				if (s.isOpen() && room.equals(s.getUserProperties().get("room"))) {

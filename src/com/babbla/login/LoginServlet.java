@@ -29,6 +29,8 @@ public class LoginServlet extends HttpServlet {
 		
 		String username = request.getParameter("username");
 		String email = request.getParameter("email");
+//		String publicKey = request.getParameter("publicKey");
+//		System.out.println(publicKey);
 		User user = new User();
 		user.setName(username);
 		user.setEmail(email);

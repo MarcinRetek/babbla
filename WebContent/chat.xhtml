@@ -13,37 +13,21 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	<script src="resources/JS/chat.js"></script>
 	<link rel="stylesheet" href="resources/CSS/stylesheet.css"></link>
+	<script language="JavaScript" type="text/javascript" src="resources/JS/lib/cryptico/jsbn.js"></script>
+    <script language="JavaScript" type="text/javascript" src="resources/JS/lib/cryptico/random.js"></script>
+    <script language="JavaScript" type="text/javascript" src="resources/JS/lib/cryptico/hash.js"></script>
+    <script language="JavaScript" type="text/javascript" src="resources/JS/lib/cryptico/rsa.js"></script>
+    <script language="JavaScript" type="text/javascript" src="resources/JS/lib/cryptico/aes.js"></script>
+    <script language="JavaScript" type="text/javascript" src="resources/JS/lib/cryptico/api.js"></script>
 </h:head>
 <h:body>
-
-	<nav class="navbar navbar-default">
-
-	<div class="title">
-		<a class="navbar-brand" href="index.jsp">Babbla</a>
-	</div>
 	
-	<ul class="nav navbar-nav">
-		<li><a href="chat.xhtml">Chat</a></li>
-		<li><a href="#" onclick="signOut();">Sign out</a></li>
-	</ul>
-	<div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>
-	
-	<div id="reg-div">
-		<form id="user-form" action="loginServlet" method="post">
-
-			<input type="hidden" name="username" id="username" /> 
-			<input	type="hidden" name="email" id="email" /> 
-			<input type="submit" value="Register" id="registerBtn" />
-
-		</form>
-	</div>
-	</nav>
-
+	<ui:include src="/WEB-INF/components/nav-bar.xhtml" />
 
 	<div class="container chat-wrapper">
-	
-	<h:inputHidden value="#{ sessionScope.user.name }" id="nickname"></h:inputHidden>	
-				
+	<h:inputHidden value="#{ sessionScope.user.name }" id="nickname"></h:inputHidden>
+	<button onclick="generateKeys()" value="1"></button>
+	<button onclick="generatePub()" value="2"></button>				
 		<form id="do-chat">
 			<h2 class="alert alert-success"></h2>
 			<table id="response" class="table table-bordered"></table>
@@ -57,7 +41,6 @@
 
 		</form>
 	</div>
-
 
 </h:body>
 

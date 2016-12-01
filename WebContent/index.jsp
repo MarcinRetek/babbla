@@ -3,18 +3,15 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Babbla</title>
-<meta name="google-signin-scope" content="profile email">
-<meta name="google-signin-client_id"
-	content="660649166502-qljiqonknrnituk0pm2o33ajl4ne6qif.apps.googleusercontent.com">
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<script src="https://apis.google.com/js/platform.js"></script>
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-<script src="resources/JS/login-script.js"></script>
-<link rel="stylesheet" href="resources/CSS/stylesheet.css">
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>Babbla</title>
+	<meta name="google-signin-scope" content="profile email">
+	<meta name="google-signin-client_id" content="660649166502-qljiqonknrnituk0pm2o33ajl4ne6qif.apps.googleusercontent.com">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="https://apis.google.com/js/platform.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<script src="resources/JS/login-script.js"></script>
+	<link rel="stylesheet" href="resources/CSS/stylesheet.css">
 </head>
 
 
@@ -37,6 +34,7 @@
 
 			<input type="hidden" name="username" id="username" />
 			 <input	type="hidden" name="email" id="email" />
+		<!--  	 <input	type="hidden" name="publicKey" id="public-key" />	-->
 			 <input type="submit" value="Register" id="registerBtn" />
 
 		</form> 
