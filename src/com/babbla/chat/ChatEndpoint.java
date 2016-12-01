@@ -6,7 +6,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import javax.ejb.EJB;
-import javax.inject.Inject;
 import javax.websocket.EncodeException;
 import javax.websocket.OnMessage;
 import javax.websocket.OnOpen;
@@ -20,8 +19,9 @@ import com.babbla.interfaces.LocalUser;
 import com.babbla.models.Message;
 import com.babbla.models.User;
 
-@ServerEndpoint(value = "/chat/{room}", encoders = ChatMessageEncoder.class, decoders = ChatMessageDecoder.class)
+@ServerEndpoint(value = "/chat/{publicKey}", encoders = ChatMessageEncoder.class, decoders = ChatMessageDecoder.class)
 public class ChatEndpoint {
+	
 	private final Logger log = Logger.getLogger(getClass().getName());
 	
 	@EJB
@@ -31,20 +31,20 @@ public class ChatEndpoint {
 	LocalUser userEJB;
 	
 	@OnOpen
-	public void open(final Session session, @PathParam("room") final String room) {
-		log.info("session openend and bound to room: " + room);
-		session.getUserProperties().put("room", room);
+	public void open(final Session session, @PathParam("publicKey") final String publicKey) {
+		session.getUserProperties().put("publicKey", publicKey);
 	}
  
 	@OnMessage
 	public void onMessage(final Session session, final ChatMessage chatMessage) {
-		String room = (String) session.getUserProperties().get("room");
+		//String room = (String) session.getUserProperties().get("room");
+		//String publicKey = (String) session.getUserProperties().get("publicKey");
 		//save(chatMessage);
 		try {
 			for (Session s : session.getOpenSessions()) {
-				if (s.isOpen() && room.equals(s.getUserProperties().get("room"))) {
+//				if (s.isOpen() && publicKey.equals(s.getUserProperties().get("publicKey"))) {
 					s.getBasicRemote().sendObject(chatMessage);
-				}
+//				}
 			}
 		} catch (IOException | EncodeException e) {
 			log.log(Level.WARNING, "onMessage failed", e);

@@ -13,16 +13,23 @@
 	var encryptedMessage;
 	var decryptedMessage;
 	var passPhrase;  
-	
+	var newPath;
 	function onMessageReceived(evt) {
 		var msg = JSON.parse(evt.data);
-
-		var decrypedMsg = decryptMessage(msg.message, msg.publicKey, msg.sender);
+		var decrypedMsg = decryptMessage(msg.message);
+		console.log("DECMSG: " + decrypedMsg);
 		var $messageLine = $('<h4>' + msg.sender + ' | <em>' + msg.received + '</em></h4>'
 				+ '<p> '+ decrypedMsg +' </p><hr>');
 
 		$chatWindow.append($messageLine);
 		scrollToChatContainerBottom();
+	}
+	
+	function onOpen(data) {
+		console.log("ON OPEN");
+		var urlArray = data.currentTarget.url.split("/");
+		newPath = urlArray[5];
+		console.log(newPath);
 	}
 	
 	function sendMessage() {
@@ -38,10 +45,11 @@
  
 	function connectToChatserver() {
 		//room = $('#chatroom option:selected').val();
-		wsocket = new WebSocket(serviceLocation + room);
+		wsocket = new WebSocket(serviceLocation + publicKeyString2); //used to be room
+		wsocket.onopen = onOpen;
 		wsocket.onmessage = onMessageReceived;
+		
 	}
-
 	
 	function scrollToChatContainerBottom() {
 		$('#response').stop().animate({
@@ -50,12 +58,12 @@
 	}
  
 	$(document).ready(function() {
-		connectToChatserver();
 		$nickName = $('#nickname');
 		$message = $('#message');
 		$chatWindow = $('#response');
+		generateKeys();
+		connectToChatserver();
 		$nickName.focus();
-		//generateKeys();
 		$('#do-chat').submit(function(evt) {
 			evt.preventDefault();
 			sendMessage();
@@ -66,38 +74,21 @@
 	
 	function generateKeys() {
 		passPhrase = $nickName.val();
-		RSAKey2 = cryptico.generateRSAKey(passPhrase, 512);
+		RSAKey2 = cryptico.generateRSAKey(passPhrase, 128);
 		publicKeyString2 = cryptico.publicKeyString(RSAKey2);
 		console.log("KEY 1: " + publicKeyString2);
 	}
 	
-	function generatepub() {
-		pass = "hej";
-		var RSAKey3 = cryptico.generateRSAKey(pass, 512);
-		publicKeyString3 = cryptico.publicKeyString(RSAKey3);
-		console.log("KEY 2: " + publicKeyString3);
-	}
-	
 	function encryptMessage(message) {
-		encryptionResult = cryptico.encrypt(message, publicKeyString2);
+		console.log("NEWPATH: " + newPath);
+		encryptionResult = cryptico.encrypt(message, newPath);
+		console.log("ENCRYPT: " + encryptionResult.cipher);
 		return encryptionResult.cipher;
 	}
 	
-	function decryptMessage(message, otherUserPublicKey, sender) {
-		if (passPhrase == sender) {
-			console.log("equals own pasphrase");
-			var decryptResult = cryptico.decrypt(message, RSAKey2);
-			//var decryptResult = cryptico.decrypt(message, RSAKey2); works with own msg but not for the other guy
-			console.log("STATUS: " + decryptResult.status);
-			return decryptResult.plaintext;
-		}else{
-			console.log("NOT equals own phassphrase");
-			var decryptResult = cryptico.decrypt(message, otherUserPublicKey);
-			//var decryptResult = cryptico.decrypt(message, RSAKey2); works with own msg but not for the other guy
-			console.log("STATUS: " + decryptResult.status);
-			return decryptResult.plaintext;	
-		}
-		
-		
+	function decryptMessage(message) {
+		var decryptResult = cryptico.decrypt(message, RSAKey2);
+		console.log("STATUS: " + decryptResult.status);
+		return decryptResult.plaintext;
 	}
 /* ]]> */
