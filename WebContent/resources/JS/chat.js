@@ -1,7 +1,5 @@
 /* <![CDATA[ */
 
-var isUserLoggedIn = false
-var passPhrase;
 var wsocket;
 var serviceLocation = "ws://" + document.location.host + "/Babbla-project/chat/";
 var $nickName;
@@ -13,44 +11,10 @@ var publicKeyString2;
 var encryptionResult;
 var encryptedMessage;
 var decryptedMessage;
-var encryptionResult;
 var passPhrase;  
 var newPath;
 
-function startUp() {
-	var hideContent = document.getElementById('reg-div');
-	hideContent.style.display = 'none';	
-}
 
-function onSignIn(googleUser) {
-	isUserLoggedIn = true;  
-	var showContent = document.getElementById('reg-div');
-	showContent.style.display = 'block';	
-
-    var profile = googleUser.getBasicProfile();
-
-    var user = {
-        username: profile.getName(),
-        email: profile.getEmail()
-    }
-    
-    var userInput = document.getElementById("username");
-    userInput.value = userInput.value = user.username;
-    
-    var emailInput = document.getElementById("email");
-    emailInput.value = emailInput.value = user.email;
-}
-
-
-function signOut() {	
-	var hideContent = document.getElementById('reg-div');
-	hideContent.style.display = 'none';	
-    var auth2 = gapi.auth2.getAuthInstance();
-    auth2.signOut().then(function () {
-        console.log('User signed out.');
-
-    });
-}
 
 
 /*-- CHAT --  */
@@ -84,7 +48,7 @@ function sendMessage() {
 	}
  
 	function connectToChatserver() {
-	//room = $('#chatroom option:selected').val();
+		//room = $('#chatroom option:selected').val();
 	wsocket = new WebSocket(serviceLocation + publicKeyString2); //used to be room
 	wsocket.onopen = onOpen;
 	wsocket.onmessage = onMessageReceived;
@@ -98,7 +62,7 @@ function scrollToChatContainerBottom() {
 	}
  
 	$(document).ready(function() {
-	$nickName = $('#nickname');
+		$nickName = $('#nickname');
 	$message = $('#message');
 	$chatWindow = $('#response');
 	generateKeys();
@@ -112,11 +76,11 @@ function scrollToChatContainerBottom() {
  
 	});
 	
-function generateKeys() {
-	passPhrase = $nickName.val();
-	RSAKey2 = cryptico.generateRSAKey(passPhrase, 128);
-	publicKeyString2 = cryptico.publicKeyString(RSAKey2);
-	console.log("KEY 1: " + publicKeyString2);
+	function generateKeys() {
+		passPhrase = $nickName.val();
+		RSAKey2 = cryptico.generateRSAKey(passPhrase, 128);
+		publicKeyString2 = cryptico.publicKeyString(RSAKey2);
+		console.log("KEY 1: " + publicKeyString2);
 }
 
 function encryptMessage(message) {

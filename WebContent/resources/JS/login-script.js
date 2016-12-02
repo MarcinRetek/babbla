@@ -1,8 +1,4 @@
 var isUserLoggedIn = false
-var passPhrase;
-var RSAKey;
-var publicKeyString;
-var encryptionResult;
 
 function startUp() {
 	var hideContent = document.getElementById('reg-div');

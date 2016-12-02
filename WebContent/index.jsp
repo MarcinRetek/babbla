@@ -10,8 +10,7 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 	<script src="https://apis.google.com/js/platform.js"></script>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-	<script src="resources/JS/script.js"></script>
+	<script src="resources/JS/login-script.js"></script>
 	<link rel="stylesheet" href="resources/CSS/stylesheet.css">
 	<script language="JavaScript" type="text/javascript" src="resources/JS/lib/cryptico/jsbn.js"></script>
     <script language="JavaScript" type="text/javascript" src="resources/JS/lib/cryptico/random.js"></script>
