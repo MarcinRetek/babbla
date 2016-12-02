@@ -40,6 +40,7 @@ public class ChatEndpoint {
  
 	@OnMessage
 	public void onMessage(final Session session, final ChatMessage chatMessage) {
+		
 		//String publicKey = (String) session.getUserProperties().get("publicKey");
 		//save(chatMessage);
 		try {

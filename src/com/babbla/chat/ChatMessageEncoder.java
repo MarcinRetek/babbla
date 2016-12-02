@@ -7,8 +7,6 @@ import javax.websocket.Encoder;
 import javax.websocket.EndpointConfig;
 
 import com.babbla.interfaces.LocalChat;
-import com.babbla.models.Message;
-import com.babbla.models.User;
 
 public class ChatMessageEncoder implements Encoder.Text<ChatMessage> {
 	

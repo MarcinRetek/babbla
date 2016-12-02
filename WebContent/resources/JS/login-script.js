@@ -40,16 +40,7 @@ function signOut() {
 
     });
 }
-/*
-function generateKeys(username) {
-	  var passPhrase = username;
-	  RSAKey = cryptico.generateRSAKey(passPhrase, 512);
-	  publicKeyString = cryptico.publicKeyString(RSAKey);
-	  var publicKey = document.getElementById("public-key");
-	  publicKey.value = publicKey.value = publicKeyString
-	}
 
-*/
 
 
 

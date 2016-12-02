@@ -7,11 +7,18 @@
 	<title>Babbla</title>
 	<meta name="google-signin-scope" content="profile email">
 	<meta name="google-signin-client_id" content="660649166502-qljiqonknrnituk0pm2o33ajl4ne6qif.apps.googleusercontent.com">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 	<script src="https://apis.google.com/js/platform.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-	<script src="resources/JS/login-script.js"></script>
+	<script src="resources/JS/script.js"></script>
 	<link rel="stylesheet" href="resources/CSS/stylesheet.css">
+	<script language="JavaScript" type="text/javascript" src="resources/JS/lib/cryptico/jsbn.js"></script>
+    <script language="JavaScript" type="text/javascript" src="resources/JS/lib/cryptico/random.js"></script>
+    <script language="JavaScript" type="text/javascript" src="resources/JS/lib/cryptico/hash.js"></script>
+    <script language="JavaScript" type="text/javascript" src="resources/JS/lib/cryptico/rsa.js"></script>
+    <script language="JavaScript" type="text/javascript" src="resources/JS/lib/cryptico/aes.js"></script>
+    <script language="JavaScript" type="text/javascript" src="resources/JS/lib/cryptico/api.js"></script>
 </head>
 
 
