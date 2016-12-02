@@ -40,7 +40,6 @@
 
 			<input type="hidden" name="username" id="username" />
 			 <input	type="hidden" name="email" id="email" />
-		<!--  	 <input	type="hidden" name="publicKey" id="public-key" />	-->
 			 <input type="submit" value="Register" id="registerBtn" />
 
 		</form> 

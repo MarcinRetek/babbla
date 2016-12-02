@@ -17,13 +17,14 @@ function onSignIn(googleUser) {
         email: profile.getEmail()
     }
     
-   // generateKeys(user.username);
-    
     var userInput = document.getElementById("username");
     userInput.value = userInput.value = user.username;
     
     var emailInput = document.getElementById("email");
     emailInput.value = emailInput.value = user.email;
+    
+    generateKeys(user.username);
+    
 }
 
 

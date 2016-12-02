@@ -24,11 +24,9 @@ public class ChatMessageEncoder implements Encoder.Text<ChatMessage> {
 	//tar emot message och appendear ut det.
 	@Override
 	public String encode(final ChatMessage chatMessage) throws EncodeException {
-		System.out.println("PUBKEY: " + chatMessage.getPublicKey());
 		return Json.createObjectBuilder()
 				.add("message", chatMessage.getMessage())
 				.add("sender", chatMessage.getSender())
-				.add("publicKey", chatMessage.getPublicKey())
 				.add("received", chatMessage.getReceived().toString())
 				.add("publicKey", chatMessage.getPublicKey()).build().toString();
 	}

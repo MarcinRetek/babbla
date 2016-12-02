@@ -12,45 +12,41 @@ var encryptionResult;
 var encryptedMessage;
 var decryptedMessage;
 var passPhrase;  
-var newPath;
+var message;
+var otherUsersPublicKey;
 
-
-
-
-/*-- CHAT --  */
 function onMessageReceived(evt) {
 	var msg = JSON.parse(evt.data);
-	var decrypedMsg = decryptMessage(msg.message);
-	console.log("DECMSG: " + decrypedMsg);
-	var $messageLine = $('<h4>' + msg.sender + ' | <em>' + msg.received + '</em></h4>'
-			+ '<p> '+ decrypedMsg +' </p><hr>');
+	
+	if (msg.publicKey != publicKeyString2) {
+		otherUsersPublicKey = msg.publicKey;
+	}
+	if (msg.sender != $nickName.val()) {
+		var decrypedMsg = decryptMessage(msg.message);
+		var $messageLine = $('<h4>' + msg.sender + ' | <em>' + msg.received + '</em></h4>'
+				+ '<p> '+ decrypedMsg +' </p><hr>');
+	}else {
+		var $messageLine = $('<h4>' + msg.sender + ' | <em>' + msg.received + '</em></h4>'
+				+ '<p> '+ message +' </p><hr>');
+	}
 
 	$chatWindow.append($messageLine);
 	scrollToChatContainerBottom();
 }
 
-function onOpen(data) {
-	console.log("ON OPEN");
-	var urlArray = data.currentTarget.url.split("/");
-	newPath = urlArray[5];
-	console.log(newPath);
-}
-
 function sendMessage() {
-	var message = $message.val();
+	message = $message.val();
 	encryptedMessage = encryptMessage(message);
-	
 	var msg = '{"message":"' + encryptedMessage + '", "sender":"'
-			+ $nickName.val() + '", "received":"", "publicKey":"'+ RSAKey2 +'"}';
+			+ $nickName.val() + '", "received":"", "publicKey":"'+ publicKeyString2 +'"}';
 
 	wsocket.send(msg);
 	$message.val('').focus();
-	}
+}
  
 	function connectToChatserver() {
 		//room = $('#chatroom option:selected').val();
-	wsocket = new WebSocket(serviceLocation + publicKeyString2); //used to be room
-	wsocket.onopen = onOpen;
+	wsocket = new WebSocket(serviceLocation + "Hej"); //used to be room
 	wsocket.onmessage = onMessageReceived;
 	
 }
@@ -59,10 +55,10 @@ function scrollToChatContainerBottom() {
 	$('#response').stop().animate({
 		scrollTop: $('#response')[0].scrollHeight
 		}, 800);
-	}
+}
  
-	$(document).ready(function() {
-		$nickName = $('#nickname');
+$(document).ready(function() {
+	$nickName = $('#nickname');
 	$message = $('#message');
 	$chatWindow = $('#response');
 	generateKeys();
@@ -73,26 +69,21 @@ function scrollToChatContainerBottom() {
 			sendMessage();
 			
 		});
- 
-	});
+});
 	
-	function generateKeys() {
-		passPhrase = $nickName.val();
-		RSAKey2 = cryptico.generateRSAKey(passPhrase, 128);
-		publicKeyString2 = cryptico.publicKeyString(RSAKey2);
-		console.log("KEY 1: " + publicKeyString2);
+function generateKeys() {
+	passPhrase = $nickName.val();
+	RSAKey2 = cryptico.generateRSAKey(passPhrase, 512);
+	publicKeyString2 = cryptico.publicKeyString(RSAKey2);
 }
 
 function encryptMessage(message) {
-	console.log("NEWPATH: " + newPath);
-	encryptionResult = cryptico.encrypt(message, newPath);
-	console.log("ENCRYPT: " + encryptionResult.cipher);
+	encryptionResult = cryptico.encrypt(message, otherUsersPublicKey);
 	return encryptionResult.cipher;
 }
 
 function decryptMessage(message) {
 	var decryptResult = cryptico.decrypt(message, RSAKey2);
-	console.log("STATUS: " + decryptResult.status);
 	return decryptResult.plaintext;
 }
 /* ]]> */

@@ -17,7 +17,6 @@ import com.babbla.models.User;
 @WebServlet("/loginServlet")
 public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
 	@EJB
 	LocalUser userEJB;
 
@@ -29,8 +28,7 @@ public class LoginServlet extends HttpServlet {
 		
 		String username = request.getParameter("username");
 		String email = request.getParameter("email");
-//		String publicKey = request.getParameter("publicKey");
-//		System.out.println(publicKey);
+		
 		User user = new User();
 		user.setName(username);
 		user.setEmail(email);
@@ -39,7 +37,6 @@ public class LoginServlet extends HttpServlet {
 
 		String url = request.getRequestURL().toString();
 		String baseURL = url.substring(0, url.length() - request.getRequestURI().length()) + request.getContextPath();
-		
 				
 		if(userEJB.validateUser(user)){
 			response.sendRedirect(baseURL + "/faces/index.jsp");

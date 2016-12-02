@@ -26,6 +26,7 @@
 
 	<div class="container chat-wrapper">
 	<h:inputHidden value="#{ sessionScope.user.name }" id="nickname"></h:inputHidden>
+	<input type="submit" onclick="sendMessage()" value="Send key"/>
 		<form id="do-chat">
 			<h2 class="alert alert-success"></h2>
 			<table id="response" class="table table-bordered"></table>
