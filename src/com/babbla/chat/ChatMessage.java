@@ -7,7 +7,7 @@ import com.babbla.models.User;
 public class ChatMessage {
 	private String message;
 	private String sender;
-	private Date received;
+	private String received;
 	private String publicKey;
 	
 	public String getMessage() {
@@ -15,12 +15,6 @@ public class ChatMessage {
 	}
 	public void setMessage(String message) {
 		this.message = message;
-	}
-	public Date getReceived() {
-		return received;
-	}
-	public void setReceived(Date received) {
-		this.received = received;
 	}
 	public String getSender() {
 		return sender;
@@ -33,5 +27,11 @@ public class ChatMessage {
 	}
 	public void setPublicKey(String publicKey) {
 		this.publicKey = publicKey;
+	}
+	public String getReceived() {
+		return received;
+	}
+	public void setReceived(String received) {
+		this.received = received;
 	}
 }

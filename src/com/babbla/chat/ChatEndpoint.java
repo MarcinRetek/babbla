@@ -37,15 +37,20 @@ public class ChatEndpoint {
 	
 	@OnOpen
 	public void open(final Session session, @PathParam("room") final String room) {
+		log.info("session openend and bound to room: " + room);
 		session.getUserProperties().put("room", room);
 		}
  
 	@OnMessage
 	public void onMessage(final Session session, final ChatMessage chatMessage) {
+		String room = (String) session.getUserProperties().get("room");
+
 		//save(chatMessage);
 		try {
 			for (Session s : session.getOpenSessions()) {
+				if (s.isOpen() && room.equals(s.getUserProperties().get("room"))) {
 					s.getBasicRemote().sendObject(chatMessage);
+				}
 			}
 		} catch (IOException | EncodeException e) {
 			log.log(Level.WARNING, "onMessage failed", e);

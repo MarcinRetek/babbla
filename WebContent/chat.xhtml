@@ -23,10 +23,27 @@
 <h:body>
 	
 	<ui:include src="/WEB-INF/components/nav-bar.xhtml" />
+	
+	<div class="container chat-signin">
+		<form class="form-signin">
+			<h2 class="form-signin-heading">Chat sign in</h2>
+			<div class="btn-group">
+				<label for="chatroom">Users</label> 
+				<select size="1" id="chatroom">
+					<ui:repeat value="#{ userBean.getAll() }" var="users">
+						<option>
+							#{ users.name }
+						</option>		
+					</ui:repeat>
+				</select> 
+			</div>
+			<button class="btn btn-large btn-primary" type="submit" id="enterRoom">Sign in</button>
+		</form>
+	</div>
 
-	<div class="container chat-wrapper">
 	<h:inputHidden value="#{ sessionScope.user.name }" id="nickname"></h:inputHidden>
-	<input type="submit" onclick="sendMessage()" value="Send key"/>
+	<div class="container chat-wrapper">
+	<input type="submit" onclick="sendKey()" id="sendKey" value="Send key"/>
 		<form id="do-chat">
 			<h2 class="alert alert-success"></h2>
 			<table id="response" class="table table-bordered"></table>
@@ -35,7 +52,7 @@
 				
 				<div class="controls">
 					<input type="text" class="input-block-level" placeholder="Your message..." id="message" style="height: 60px" />
-					<input class="btn btn-large btn-block btn-primary" type="submit" value="Send message"/>	
+					<input class="btn btn-large btn-block btn-primary" type="submit" id="sendMessage" value="Send message"/>	
 				</div>
 		</form>
 		

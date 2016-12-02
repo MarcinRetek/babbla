@@ -1,6 +1,7 @@
 package com.babbla.chat;
 
 import java.io.StringReader;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import javax.ejb.EJB;
@@ -28,7 +29,7 @@ public class ChatMessageDecoder implements Decoder.Text<ChatMessage> {
 	}
 	
 	
-	//Tar emot meddelnade från frontend o skickar rill encoder
+	//Tar emot meddelnade frï¿½n frontend o skickar rill encoder
 	@Override
 	public ChatMessage decode(final String textMessage) throws DecodeException {
 		ChatMessage chatMessage = new ChatMessage();
@@ -36,7 +37,7 @@ public class ChatMessageDecoder implements Decoder.Text<ChatMessage> {
 				.readObject();
 		chatMessage.setMessage(obj.getString("message"));
 		chatMessage.setSender(obj.getString("sender"));
-		chatMessage.setReceived(new Date());
+		chatMessage.setReceived(formatTime());
 		chatMessage.setPublicKey(obj.getString("publicKey"));
 		return chatMessage;
 	}
@@ -45,5 +46,11 @@ public class ChatMessageDecoder implements Decoder.Text<ChatMessage> {
 	public boolean willDecode(final String s) {
 		return true;
  	}
-
+	
+	public String formatTime(){
+		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("MM/dd HH:mm");
+		String format = simpleDateFormat.format(new Date());
+		return format;
+	
+	}
 }
