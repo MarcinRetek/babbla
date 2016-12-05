@@ -30,11 +30,10 @@
 			<div class="btn-group">
 				<label for="chatroom">Users</label> 
 				<select size="1" id="chatroom">
-					<ui:repeat value="#{ userBean.getAll() }" var="users">
-						<option>
-							#{ users.name }
-						</option>		
-					</ui:repeat>
+					<option>Summer</option>
+					<option>Autumn</option>
+					<option>Winter</option>
+					<option>Spring</option>		
 				</select> 
 			</div>
 			<button class="btn btn-large btn-primary" type="submit" id="enterRoom">Sign in</button>
@@ -52,7 +51,8 @@
 				
 				<div class="controls">
 					<input type="text" class="input-block-level" placeholder="Your message..." id="message" style="height: 60px" />
-					<input class="btn btn-large btn-block btn-primary" type="submit" id="sendMessage" value="Send message"/>	
+					<input class="btn btn-large btn-block btn-primary" type="submit" id="sendMessage" value="Send message"/>
+					<button class="btn btn-large btn-block" type="button" id="leave-room">Leave room</button>	
 				</div>
 		</form>
 		

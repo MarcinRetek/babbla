@@ -12,30 +12,36 @@ var message;
 var otherUsersPublicKey;
 
 function onMessageReceived(evt) {
+	
+//	if(wsocket.readyState === wsocket.CLOSED ){
+//		alert("Chat room is full");
+//	}
+	
 	var msg = JSON.parse(evt.data);
-	console.log(msg);
+
 	if (msg.publicKey != publicKeyString2) {
 		otherUsersPublicKey = msg.publicKey;
 	}
+	
 	if (msg.message == "Passing keys...") {
-		console.log("msg e undefined" );
 		var $messageLine = $('<h4>' + msg.sender + ' | <em>' + msg.received + '</em></h4>'
 				+ '<p> '+ "Passing keys..." +' </p><hr>');
 		$chatWindow.append($messageLine);
+		
 	}else if(msg.sender != $nickName.val()){
 		var decryptedMsg = decryptMessage(msg.message);
 		var $messageLine = $('<h4>' + msg.sender + ' | <em>' + msg.received + '</em></h4>'
 				+ '<p> '+ decryptedMsg +' </p><hr>');
 		$chatWindow.append($messageLine);
+	
+	}else if(msg.message == "The room is full, please change"){
+		alert("The room is full. Please change");
 	}else {
 		var $messageLine = $('<h4>' + msg.sender + ' | <em>' + msg.received + '</em></h4>'
 				+ '<p> '+ message +' </p><hr>');
 		$chatWindow.append($messageLine);
 	}
-	
-		
-//		var messageWithOnlyKeys =  $('<h4>' + msg.sender + ' | <em>' + msg.received + '</em></h4>'
-//				+ '<p> '+ message +' </p><hr>');
+
 	$chatWindow.append($messageLine);
 	scrollToChatContainerBottom();
 }
@@ -43,7 +49,10 @@ function onMessageReceived(evt) {
 function sendKey() {
 	var msg = '{"message":"' + "Passing keys..." + '", "sender":"'
 	+ $nickName.val() + '", "received":"", "publicKey":"'+ publicKeyString2 +'"}';
-
+	
+//	if(wsocket.readyState === wsocket.CLOSED ){
+//		alert("Chat room is full");
+//	}
 	wsocket.send(msg);
 	$message.val('').focus();
 }
@@ -84,9 +93,8 @@ $(document).ready(function() {
 	$nickName = $('#nickname');
 	$message = $('#message');
 	$chatWindow = $('#response');
-	generateKeys();
-	//connectToChatserver();
 	$nickName.focus();
+	generateKeys();
 	$('.chat-wrapper').hide();
 	
 	$('#enterRoom').click(function(evt) {

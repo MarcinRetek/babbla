@@ -35,8 +35,6 @@ public class LoginUserBean implements Serializable{
 		sessionMap.put("user", loggedInUser);
 	}
 	
-	
-	
 	public void doLogout(){
 		//TODO: handle this
 	}
