@@ -41,9 +41,8 @@ public class LoginServlet extends HttpServlet {
 		if(userEJB.validateUser(user)){
 			response.sendRedirect(baseURL + "/faces/index.jsp");
 		}else{
-			setUserSession(user);
-			String message = "User already exists in database";
-			response.sendRedirect("index.jsp?message=" + URLEncoder.encode(message, "UTF-8"));
+			setUserSession(user);			
+			response.sendRedirect(baseURL + "/faces/chat.xhtml");
 		}
 			
 	}
