@@ -33,11 +33,13 @@
 
 	<nav class="navbar navbar-default">
 
-	<div class="title">
-		<a class="navbar-brand" href="index.jsp">Babbla</a>
-	</div>
-
 	<ul class="nav navbar-nav">
+		<li>
+			<div class="title">
+				<a href="index.jsp"><img src="resources/IMAGES/logo.png"></img></a>
+
+			</div>
+		</li>
 		<li>
 			<div id="reg-div">
 				<form id="user-form" action="loginServlet" method="post">
@@ -52,7 +54,6 @@
 		<li><a href="#" onclick="signOut();">Sign out</a></li>
 	</ul>
 	<div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>
-
 
 	</nav>
 
