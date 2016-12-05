@@ -41,7 +41,7 @@
 			</form> 
 		</div>
 		</li>
-		<li><a href="#" onclick="signOut();">Sign out</a></li>
+		<li><a href="index.jsp" id="signout" onclick="signOut();">Sign out</a></li>
 	</ul>
 	<div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>
 
