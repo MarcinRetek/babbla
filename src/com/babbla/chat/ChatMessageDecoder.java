@@ -4,22 +4,15 @@ import java.io.StringReader;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import javax.ejb.EJB;
 import javax.json.Json;
 import javax.json.JsonObject;
 import javax.websocket.DecodeException;
 import javax.websocket.Decoder;
 import javax.websocket.EndpointConfig;
 
-import com.babbla.interfaces.LocalChat;
-import com.babbla.models.Message;
-import com.babbla.models.User;
-
 public class ChatMessageDecoder implements Decoder.Text<ChatMessage> {
 	
-	@EJB
-	LocalChat chatEJB;
-	
+		
 	@Override
 	public void init(final EndpointConfig config) {
 	}
@@ -29,7 +22,6 @@ public class ChatMessageDecoder implements Decoder.Text<ChatMessage> {
 	}
 	
 	
-	//Tar emot meddelnade fr�n frontend o skickar rill encoder
 	@Override
 	public ChatMessage decode(final String textMessage) throws DecodeException {
 		ChatMessage chatMessage = new ChatMessage();

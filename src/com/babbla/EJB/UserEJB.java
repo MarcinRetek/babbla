@@ -5,9 +5,7 @@ import java.util.List;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
 
-import com.babbla.backingbeans.LoginUserBean;
 import com.babbla.dao.UserDAO;
-import com.babbla.exceptions.ValidateException;
 import com.babbla.interfaces.LocalUser;
 import com.babbla.models.User;
 

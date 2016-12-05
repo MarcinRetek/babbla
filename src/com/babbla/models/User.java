@@ -29,10 +29,7 @@ public class User implements Serializable {
 	@Column(name="name", nullable=false)
 	private String name;
 
-	//bi-directional many-to-one association to Message
-	@OneToMany(mappedBy="user")
-	private List<Message> messages;
-
+	
 	public User() {
 	}
 
@@ -60,26 +57,6 @@ public class User implements Serializable {
 		this.name = name;
 	}
 
-	public List<Message> getMessages() {
-		return this.messages;
-	}
-
-	public void setMessages(List<Message> messages) {
-		this.messages = messages;
-	}
-
-	public Message addMessage(Message message) {
-		getMessages().add(message);
-		message.setUser(this);
-
-		return message;
-	}
-
-	public Message removeMessage(Message message) {
-		getMessages().remove(message);
-		message.setUser(null);
-
-		return message;
-	}
+	
 
 }

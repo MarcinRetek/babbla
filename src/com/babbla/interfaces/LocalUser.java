@@ -4,7 +4,6 @@ import java.util.List;
 
 import javax.ejb.Local;
 
-import com.babbla.backingbeans.LoginUserBean;
 import com.babbla.models.User;
 
 @Local

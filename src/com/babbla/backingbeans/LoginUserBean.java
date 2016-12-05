@@ -1,23 +1,16 @@
 package com.babbla.backingbeans;
 
 import java.io.Serializable;
-import java.util.List;
 import java.util.Map;
 
 import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
-import javax.faces.bean.ManagedProperty;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.inject.Named;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 
-import com.babbla.interfaces.LocalChat;
 import com.babbla.interfaces.LocalUser;
-import com.babbla.models.Message;
 import com.babbla.models.User;
-import com.sun.xml.wss.impl.callback.DecryptionKeyCallback.PrivateKeyRequest;
 
 
 @Named(value="loginUserBean")

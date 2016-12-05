@@ -1,12 +1,10 @@
 package com.babbla.backingbeans;
 
 import java.util.List;
-import java.util.Map;
 
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
-import javax.faces.context.FacesContext;
 import javax.inject.Named;
 
 import com.babbla.interfaces.LocalUser;
