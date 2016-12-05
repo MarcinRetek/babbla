@@ -2,13 +2,17 @@ var isUserLoggedIn = false
 
 function startUp() {
 	var hideContent = document.getElementById('reg-div');
-	hideContent.style.display = 'none';	
+	hideContent.style.display = 'none';
+	var hideSignOut = document.getElementById('signout');
+	hideSignOut.style.display = 'none';
 }
 
 function onSignIn(googleUser) {
 	isUserLoggedIn = true;  
 	var showContent = document.getElementById('reg-div');
-	showContent.style.display = 'block';	
+	showContent.style.display = 'block';
+	var showSignOut = document.getElementById('signout');
+	showSignOut.style.display = 'block';
 
     var profile = googleUser.getBasicProfile();
 

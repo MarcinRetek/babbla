@@ -61,14 +61,15 @@
 		<form class="form-signin">
 			<h2 class="form-signin-heading">Chat sign in</h2>
 			<div class="btn-group">
-				<label for="chatroom">Users</label> <select size="1" id="chatroom">
-					<ui:repeat value="#{ userBean.getAll() }" var="users">
-						<option>#{ users.name }</option>
-					</ui:repeat>
-				</select>
+				<label for="chatroom">Users</label> 
+				<select size="1" id="chatroom">
+					<option>Summer</option>
+					<option>Autumn</option>
+					<option>Winter</option>
+					<option>Spring</option>		
+				</select> 
 			</div>
-			<button class="btn btn-large btn-primary" type="submit"
-				id="enterRoom">Sign in</button>
+			<button class="btn btn-large btn-primary" type="submit" id="enterRoom">Sign in</button>
 		</form>
 	</div>
 
@@ -78,14 +79,12 @@
 		<form id="do-chat">
 			<h2 class="alert alert-success"></h2>
 			<table id="response" class="table table-bordered"></table>
-
 			<legend>Enter your message..</legend>
-
 			<div class="controls">
 				<input type="text" class="input-block-level"
 					placeholder="Your message..." id="message" style="height: 60px" />
-				<input class="btn btn-large btn-block btn-primary" type="submit"
-					id="sendMessage" value="Send message" />
+				<input class="btn btn-large btn-block btn-primary" type="submit" id="sendMessage" value="Send message" />
+				<input class="btn btn-large btn-block btn-primary" type="submit" id="leaveMessage" value="Leave room" />	
 			</div>
 		</form>
 
