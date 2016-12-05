@@ -8,52 +8,36 @@
 <h:head>
 	<title>Babbla</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1"></meta>
-	<link rel="stylesheet"
-		href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"></link>
-	<script
-		src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-	<script
-		src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"></link>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	<script src="resources/JS/chat.js"></script>
 	<link rel="stylesheet" href="resources/CSS/stylesheet.css"></link>
-	<script language="JavaScript" type="text/javascript"
-		src="resources/JS/lib/cryptico/jsbn.js"></script>
-	<script language="JavaScript" type="text/javascript"
-		src="resources/JS/lib/cryptico/random.js"></script>
-	<script language="JavaScript" type="text/javascript"
-		src="resources/JS/lib/cryptico/hash.js"></script>
-	<script language="JavaScript" type="text/javascript"
-		src="resources/JS/lib/cryptico/rsa.js"></script>
-	<script language="JavaScript" type="text/javascript"
-		src="resources/JS/lib/cryptico/aes.js"></script>
-	<script language="JavaScript" type="text/javascript"
-		src="resources/JS/lib/cryptico/api.js"></script>
+	<script language="JavaScript" type="text/javascript" src="resources/JS/lib/cryptico/jsbn.js"></script>
+	<script language="JavaScript" type="text/javascript" src="resources/JS/lib/cryptico/random.js"></script>
+	<script language="JavaScript" type="text/javascript" src="resources/JS/lib/cryptico/hash.js"></script>
+	<script language="JavaScript" type="text/javascript" src="resources/JS/lib/cryptico/rsa.js"></script>
+	<script language="JavaScript" type="text/javascript" src="resources/JS/lib/cryptico/aes.js"></script>
+	<script language="JavaScript" type="text/javascript" src="resources/JS/lib/cryptico/api.js"></script>
 </h:head>
 <h:body>
 
 	<nav class="navbar navbar-default">
 
-	<div class="title">
-		<a class="navbar-brand" href="index.jsp">Babbla</a>
-	</div>
-
-	<ul class="nav navbar-nav">
-		<li>
-			<div id="reg-div">
-				<form id="user-form" action="loginServlet" method="post">
-
-					<input type="hidden" name="username" id="username" />
-					<input type="hidden" name="email" id="email" />
+		<div class="title">
+			<a class="navbar-brand" href="index.jsp">Babbla</a>
+		</div>
+	
+		<ul class="nav navbar-nav">
+			<li>
+				<div id="reg-div">
 					<input type="submit" value="Chat" id="registerBtn" />
-
-				</form>
-			</div>
-		</li>
-		<li><a href="#" onclick="signOut();">Sign out</a></li>
-	</ul>
-	<div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>
-
-
+				</div>
+			</li>
+			<li><a href="#" onclick="signOut();">Sign out</a></li>
+		</ul>
+		<div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>
+	
 	</nav>
 
 	<div class="container chat-signin">
@@ -80,10 +64,9 @@
 			<table id="response" class="table table-bordered"></table>
 			<legend>Enter your message..</legend>
 			<div class="controls">
-				<input type="text" class="input-block-level"
-					placeholder="Your message..." id="message" style="height: 60px" />
+				<input type="text" class="input-block-level" placeholder="Your message..." id="message" style="height: 60px" />
 				<input class="btn btn-large btn-block btn-primary" type="submit" id="sendMessage" value="Send message" />
-				<input class="btn btn-large btn-block btn-primary" type="submit" id="leaveMessage" value="Leave room" />	
+				<button class="btn btn-large btn-block" type="button" id="leave-room">Leave room</button>
 			</div>
 		</form>
 

@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import javax.ejb.EJB;
 import javax.websocket.EncodeException;
 import javax.websocket.OnMessage;
 import javax.websocket.OnOpen;
@@ -12,15 +11,10 @@ import javax.websocket.Session;
 import javax.websocket.server.PathParam;
 import javax.websocket.server.ServerEndpoint;
 
-import com.babbla.interfaces.LocalUser;
-
 @ServerEndpoint(value = "/chat/{room}", encoders = ChatMessageEncoder.class, decoders = ChatMessageDecoder.class)
 public class ChatEndpoint {
 
 	private final Logger log = Logger.getLogger(getClass().getName());
-
-	@EJB
-	LocalUser userEJB;
 
 	@OnOpen
 	public void open(final Session session, @PathParam("room") final String room) {
