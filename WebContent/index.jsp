@@ -69,8 +69,8 @@
 
 		<h3>THE BABBLA COMMUNITY</h3>
 		
-		<div class="frontimg">
-		<img src="resources/IMAGES/minion.jpg"></img>
+		<div class="frontimg text-center">
+		<img src="resources/IMAGES/chat.jpeg" height="500em"></img>
 		</div>
 	</div>
 
