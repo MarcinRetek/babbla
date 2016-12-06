@@ -1,6 +1,5 @@
 package com.babbla.chat;
 
-import javax.ejb.EJB;
 import javax.json.Json;
 import javax.websocket.EncodeException;
 import javax.websocket.Encoder;

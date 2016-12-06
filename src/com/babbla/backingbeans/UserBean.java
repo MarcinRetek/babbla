@@ -20,7 +20,7 @@ public class UserBean {
 	
 	private String name;
 	private String email;
-	private String chatId;
+	
 	
 	@PostConstruct
 	public void init(){
