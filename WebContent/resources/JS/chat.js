@@ -6,8 +6,8 @@ var $nickName;
 var $message;
 var $chatWindow;
 var room = 'java';
-var RSAKey2;
-var publicKeyString2;
+var privateKey;
+var publicKeyString;
 var message;
 var otherUsersPublicKey;
 
@@ -19,7 +19,7 @@ function onMessageReceived(evt) {
 	
 	var msg = JSON.parse(evt.data);
 
-	if (msg.publicKey != publicKeyString2) {
+	if (msg.publicKey != publicKeyString) {
 		otherUsersPublicKey = msg.publicKey;
 	}
 	
@@ -48,7 +48,7 @@ function onMessageReceived(evt) {
 
 function sendKey() {
 	var msg = '{"message":"' + "Passing keys..." + '", "sender":"'
-	+ $nickName.val() + '", "received":"", "publicKey":"'+ publicKeyString2 +'"}';
+	+ $nickName.val() + '", "received":"", "publicKey":"'+ publicKeyString +'"}';
 	
 	if(wsocket.readyState === wsocket.CLOSED ){
 		alert("Chat room is full");
@@ -62,7 +62,7 @@ function sendMessage() {
 	
 	var encryptedMessage = encryptMessage(message);
 	var msg = '{"message":"' + encryptedMessage + '", "sender":"'
-			+ $nickName.val() + '", "received":"", "publicKey":"'+ publicKeyString2 +'"}';
+			+ $nickName.val() + '", "received":"", "publicKey":"'+ publicKeyString +'"}';
 
 	wsocket.send(msg);
 	$message.val('').focus();
@@ -99,7 +99,7 @@ $(document).ready(function() {
 	$('#enterRoom').click(function(evt) {
 		evt.preventDefault();
 		connectToChatserver();
-		$('.chat-wrapper h2').text('Chat # '+$nickName.val() + "@" + room);
+		$('.chat-wrapper h2').text('Chat '+$nickName.val() + " @ " + room);
 		$('.chat-signin').hide();
 		$('.chat-wrapper').show();
 		$message.focus();
@@ -121,8 +121,8 @@ $(document).ready(function() {
 	
 function generateKeys() {
 	var passPhrase = $nickName.val();
-	RSAKey2 = cryptico.generateRSAKey(passPhrase, 512);
-	publicKeyString2 = cryptico.publicKeyString(RSAKey2);
+	privateKey = cryptico.generateRSAKey(passPhrase, 1024);
+	publicKeyString = cryptico.publicKeyString(privateKey);
 }
 
 function encryptMessage(message) {
@@ -131,7 +131,7 @@ function encryptMessage(message) {
 }
 
 function decryptMessage(message) {
-	var decryptResult = cryptico.decrypt(message, RSAKey2);
+	var decryptResult = cryptico.decrypt(message, privateKey);
 	return decryptResult.plaintext;
 }
 /* ]]> */
