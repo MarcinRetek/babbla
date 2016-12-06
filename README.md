@@ -1,4 +1,6 @@
-## Application
+##BABBLA
+
+## B
 Babbla is a platform for users to chat with each other. 
 It is required that the user has a google email-account to be able to login and use our chat service.
 This is a school project and a final exam in the course Secure Software
