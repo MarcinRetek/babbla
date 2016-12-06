@@ -35,7 +35,8 @@
 					<input type="submit" value="Chat" id="registerBtn" />
 				</div>
 			</li>
-			<li><a href="#" onclick="signOut();">Sign out</a></li>
+			<li><a href="index.jsp" id="signout" onclick="signOut();">Sign out</a></li>
+			
 		</ul>
 		<div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>
 	</nav>
@@ -64,7 +65,7 @@
 			<table id="response" class="table table-bordered"></table>
 			<legend>Enter your message..</legend>
 			<div class="controls">
-				<input type="text" class="input-block-level" placeholder="Your message..." id="message" style="height: 60px" />
+				<input type="text" class="input-block-level" placeholder="Your message..." id="message" style="height: 60px; width:100%" />
 				<input class="btn btn-large btn-block btn-primary" type="submit" id="sendMessage" value="Send message" />
 				<button class="btn btn-large btn-block" type="button" id="leave-room">Leave room</button>
 			</div>
