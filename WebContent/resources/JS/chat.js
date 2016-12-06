@@ -96,7 +96,6 @@ $(document).ready(function() {
 	$nickName.focus();
 	generateKeys();
 	$('.chat-wrapper').hide();
-	
 	$('#enterRoom').click(function(evt) {
 		evt.preventDefault();
 		connectToChatserver();
