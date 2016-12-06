@@ -1,4 +1,4 @@
-# BABBLA
+# Babbla
 
 ## Application
 Babbla is a platform for users to chat with each other. 
