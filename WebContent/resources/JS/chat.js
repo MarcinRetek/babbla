@@ -13,9 +13,7 @@ var otherUsersPublicKey;
 
 function onMessageReceived(evt) {
 	
-	if(wsocket.readyState === wsocket.CLOSED ){
-		alert("Chat room is full");
-	}
+	checkConnection()
 	
 	var msg = JSON.parse(evt.data);
 
@@ -36,6 +34,7 @@ function onMessageReceived(evt) {
 	
 	}else if(msg.message == "The room is full, please change"){
 		alert("The room is full. Please change");
+		
 	}else {
 		var $messageLine = $('<h4>' + msg.sender + ' | <em>' + msg.received + '</em></h4>'
 				+ '<p> '+ message +' </p><hr>');
@@ -46,13 +45,16 @@ function onMessageReceived(evt) {
 	scrollToChatContainerBottom();
 }
 
+function checkConnection() {
+	if(wsocket.readyState === wsocket.CLOSED ){
+		alert("Chat room is full");
+	}
+}
+
 function sendKey() {
 	var msg = '{"message":"' + "Passing keys..." + '", "sender":"'
 	+ $nickName.val() + '", "received":"", "publicKey":"'+ publicKeyString +'"}';
 	
-	if(wsocket.readyState === wsocket.CLOSED ){
-		alert("Chat room is full");
-	}
 	wsocket.send(msg);
 	$message.val('').focus();
 }
@@ -67,7 +69,7 @@ function sendMessage() {
 	wsocket.send(msg);
 	$message.val('').focus();
 }
- 
+
 function connectToChatserver() {
 	room = $('#chatroom option:selected').val();
 	wsocket = new WebSocket(serviceLocation + room); 
@@ -89,13 +91,14 @@ function leaveRoom() {
 }
 
 $(document).ready(function() {
+	$('.chat-wrapper').hide();
 	$('#sendMessage').prop("disabled",true);
 	$nickName = $('#nickname');
 	$message = $('#message');
 	$chatWindow = $('#response');
 	$nickName.focus();
+	
 	generateKeys();
-	$('.chat-wrapper').hide();
 	$('#enterRoom').click(function(evt) {
 		evt.preventDefault();
 		connectToChatserver();
