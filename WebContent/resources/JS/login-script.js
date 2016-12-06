@@ -1,6 +1,10 @@
 var isUserLoggedIn = false
 
 function startUp() {
+	if (location.protocol != 'https:'){
+	 location.href = "https://localhost:8181/Babbla-project/faces/index.jsp";
+	}
+	
 	var hideContent = document.getElementById('reg-div');
 	hideContent.style.display = 'none';
 	var hideSignOut = document.getElementById('signout');

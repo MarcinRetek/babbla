@@ -25,8 +25,9 @@ public class ChatEndpoint {
 				} catch (IOException e) {
 					e.printStackTrace();
 				}
+			}else{
+				session.getUserProperties().put("room", room);
 			}	
-			session.getUserProperties().put("room", room);
 		}
 	}
 

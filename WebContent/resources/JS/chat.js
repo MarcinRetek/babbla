@@ -1,7 +1,7 @@
 /* <![CDATA[ */
 
 var wsocket;
-var serviceLocation = "ws://" + document.location.host + "/Babbla-project/chat/";
+var serviceLocation = "wss://" + document.location.host + "/Babbla-project/chat/";
 var $nickName;
 var $message;
 var $chatWindow;
@@ -13,9 +13,9 @@ var otherUsersPublicKey;
 
 function onMessageReceived(evt) {
 	
-//	if(wsocket.readyState === wsocket.CLOSED ){
-//		alert("Chat room is full");
-//	}
+	if(wsocket.readyState === wsocket.CLOSED ){
+		alert("Chat room is full");
+	}
 	
 	var msg = JSON.parse(evt.data);
 
@@ -50,9 +50,9 @@ function sendKey() {
 	var msg = '{"message":"' + "Passing keys..." + '", "sender":"'
 	+ $nickName.val() + '", "received":"", "publicKey":"'+ publicKeyString2 +'"}';
 	
-//	if(wsocket.readyState === wsocket.CLOSED ){
-//		alert("Chat room is full");
-//	}
+	if(wsocket.readyState === wsocket.CLOSED ){
+		alert("Chat room is full");
+	}
 	wsocket.send(msg);
 	$message.val('').focus();
 }

@@ -21,11 +21,9 @@
 <script language="JavaScript" type="text/javascript" src="resources/JS/lib/cryptico/api.js"></script>
 </head>
 
-
 <body onload="startUp()">
 
 	<nav class="navbar navbar-default">
-
 
 	<ul class="nav navbar-nav">
 		<li>
