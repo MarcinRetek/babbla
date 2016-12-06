@@ -1,11 +1,11 @@
-### BABBLA
+# BABBLA
 
-# Application
+## Application
 Babbla is a platform for users to chat with each other. 
 It is required that the user has a google email-account to be able to login and use our chat service.
 This is a school project and a final exam in the course Secure Software
 
-## Techniques
+### Techniques
 * Java Enterprise Edition	
 	* Session Beans, Enterprise Java Beans, Websocket	
 	
@@ -22,7 +22,7 @@ This is a school project and a final exam in the course Secure Software
 * Application Server
 	* Glassfish
 	
-## Method
+### Method
 To log in we use Googles API for a secure log in. Babbla only have access to the users email and name through Google and NOT their Google password, nor any other delicate information.  
 
 The chat client uses the RSA algorithm for encryption and decryption.
@@ -38,7 +38,7 @@ Babbla uses HTTPS and WSS (WebSocket Secure), both secure protocol, and even if 
 
 	
 	
-### Creators
+#### Creators
 	* Johannes Klint - johannesklint@gmail.com
 	* Marlon Jakobsson - jakobssonmarlon@gmail.com
 	* Marcin Retek - marcinretek@hotmail.com
