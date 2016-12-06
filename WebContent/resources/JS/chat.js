@@ -99,7 +99,7 @@ $(document).ready(function() {
 	$('#enterRoom').click(function(evt) {
 		evt.preventDefault();
 		connectToChatserver();
-		$('.chat-wrapper h2').text('Chat '+$nickName.val() + " @ " + room);
+		$('.chat-wrapper h2').text(''+$nickName.val() + " @ " + room);
 		$('.chat-signin').hide();
 		$('.chat-wrapper').show();
 		$message.focus();

@@ -94,33 +94,3 @@ h3 {
 	table-layout: fixed;
 	display: block;
 }
-#sendKey {
-   border-top: 1px solid #2f6587;
-   background: #4d89b0;
-   background: -webkit-gradient(linear, left top, left bottom, from(#3497d9), to(#4d89b0));
-   background: -webkit-linear-gradient(top, #3497d9, #4d89b0);
-   background: -moz-linear-gradient(top, #3497d9, #4d89b0);
-   background: -ms-linear-gradient(top, #3497d9, #4d89b0);
-   background: -o-linear-gradient(top, #3497d9, #4d89b0);
-   padding: 6px 12px;
-   -webkit-border-radius: 2px;
-   -moz-border-radius: 2px;
-   border-radius: 2px;
-   -webkit-box-shadow: rgba(0,0,0,1) 0 1px 0;
-   -moz-box-shadow: rgba(0,0,0,1) 0 1px 0;
-   box-shadow: rgba(0,0,0,1) 0 1px 0;
-   text-shadow: rgba(0,0,0,.4) 0 1px 0;
-   color: #ffffff;
-   font-size: 18px;
-   text-decoration: none;
-   vertical-align: middle;
-   }
-.#sendKey:hover {
-   border-top-color: #4f8cb5;
-   background: #4f8cb5;
-   color: #ffffff;
-   }
-.#sendKey:active {
-   border-top-color: #f0f3f5;
-   background: #f0f3f5;
-   }

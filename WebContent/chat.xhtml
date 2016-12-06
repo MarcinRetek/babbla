@@ -59,7 +59,7 @@
 
 	<h:inputHidden value="#{ sessionScope.user.name }" id="nickname"></h:inputHidden>
 	<div class="container chat-wrapper">
-		<input type="submit" onclick="sendKey()" id="sendKey" value="Send key" />
+		<input type="submit" onclick="sendKey()" class="btn btn-medium btn-primary" value="Send key" />
 		<form id="do-chat">
 			<h2 class="alert alert-success"></h2>
 			<table id="response" class="table table-bordered"></table>
