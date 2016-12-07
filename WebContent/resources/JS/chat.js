@@ -120,6 +120,17 @@ $(document).ready(function() {
 	$('#leave-room').click(function(){
 		leaveRoom();
 	});
+	
+	$(document).bind("contextmenu",function(e) {
+	    e.preventDefault();
+	});
+	
+	$(document).keydown(function(e){
+	    if(e.which === 123){
+	       return false;
+	    }
+	});
+	
 });
 	
 function generateKeys() {

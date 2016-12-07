@@ -10,7 +10,6 @@ This is a school project and a final exam in the course Secure Software
 	* Session Beans, Enterprise Java Beans, Websocket	
 	
 * Java Server Faces 
-	* Primefaces
 	* Java Backing Beans
 
 * Java 8
