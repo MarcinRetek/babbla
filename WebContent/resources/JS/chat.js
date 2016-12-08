@@ -52,6 +52,8 @@ function checkConnection() {
 }
 
 function sendKey() {
+	$('#sendMessage').prop("disabled",false);
+
 	var msg = '{"message":"' + "Passing keys..." + '", "sender":"'
 	+ $nickName.val() + '", "received":"", "publicKey":"'+ publicKeyString +'"}';
 	
@@ -108,9 +110,6 @@ $(document).ready(function() {
 		$message.focus();
 	});
 	
-	$('#sendKey').click(function(){
-		$('#sendMessage').prop("disabled",false);
-	});
 	$('#do-chat').submit(function(evt) {
 			evt.preventDefault();
 			sendMessage();
@@ -129,13 +128,8 @@ $(document).ready(function() {
 	    if(e.which === 123){
 	       return false;
 	    }
-	});
+	}); 
 
-	$('#addRoom').click(function(){
-		addRoom();
-	});
-
-	
 });
 	
 function generateKeys() {
