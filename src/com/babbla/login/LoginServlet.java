@@ -39,10 +39,10 @@ public class LoginServlet extends HttpServlet {
 		String baseURL = url.substring(0, url.length() - request.getRequestURI().length()) + request.getContextPath();
 				
 		if(userEJB.validateUser(user)){
-			response.sendRedirect(baseURL + "/faces/index.jsp");
+			response.sendRedirect(baseURL + "/babbla/index.jsp");
 		}else{
 			setUserSession(user);			
-			response.sendRedirect(baseURL + "/faces/chat.xhtml");
+			response.sendRedirect(baseURL + "/babbla/chat.xhtml");
 		}
 			
 	}
