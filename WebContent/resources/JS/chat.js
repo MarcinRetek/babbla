@@ -5,7 +5,7 @@ var serviceLocation = "wss://" + document.location.host + "/Babbla-project/chat/
 var $nickName;
 var $message;
 var $chatWindow;
-var room = 'java';
+var room = '';
 var privateKey;
 var publicKeyString;
 var message;
@@ -130,6 +130,11 @@ $(document).ready(function() {
 	       return false;
 	    }
 	});
+
+	$('#addRoom').click(function(){
+		addRoom();
+	});
+
 	
 });
 	
@@ -148,4 +153,14 @@ function decryptMessage(message) {
 	var decryptResult = cryptico.decrypt(message, privateKey);
 	return decryptResult.plaintext;
 }
+
+function addRoom() {
+	var newRoom = $('#addRoomOption').val();
+	$('#chatroom').append(
+			$("<option>" + newRoom + "</option>")); 
+}
+
+
+
+
 /* ]]> */
